@@ -18,7 +18,8 @@ class DBConnection
             return self::$conn;
         }
         try{
-            self::$conn = new PDO("mysql:host=$dbServerName;dbname=$dbName;charset=utf8", $dbUserName, $dbPassword)
+            self::$conn = new PDO("mysql:host=$dbServerName;dbname=$dbName;charset=utf8", $dbUserName, $dbPassword);
+            
         }
         catch(PDOException $e){
 
