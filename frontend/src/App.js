@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Category from './sideComponents/Category';
+import News from './sideComponents/News';
+import axios from 'axios';
 
 function App() {
+
+  const [dump,setDump] = useState('');
+
+  const load = async () => {
+    const data = await axios.get('http://localhost/Category-News/backend/api/app.php');
+    console.log(data.data)
+    setDump(data.data)
+  }
+
+  useEffect(()=>{
+    load()
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Hello Bahaa
-        </a>
-      </header>
+    <div className="container">
+    <h1>Category News</h1>
+    <div className="container-row">
+    <div className="folder-structure">
+      <Category />
+      <News />
+    </div>
+    <div className="category-container">
+
+    </div>
+    <div className="news-container">
+
+    </div>
+    </div>
     </div>
   );
 }
