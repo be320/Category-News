@@ -23,6 +23,7 @@ function App() {
     <h1>Category News</h1>
     <div className="container-row">
     <div className="folder-structure">
+      <h3>Categories</h3>
       <Category />
       <News />
     </div>

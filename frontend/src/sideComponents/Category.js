@@ -2,7 +2,9 @@ import React from 'react';
 
 const Category = () => {
     return(
-    <h1>category</h1>
+    <div className="category-row">
+    <div className="lookup"></div>
+    </div>
     )
     
 }
