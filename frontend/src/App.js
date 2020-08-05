@@ -3,6 +3,8 @@ import './App.css';
 import Category from './sideComponents/Category';
 import News from './sideComponents/News';
 import axios from 'axios';
+import CategoryForm from './sideComponents/CategoryForm'
+import NewsForm from './sideComponents/NewsForm'
 
 function App() {
 
@@ -26,12 +28,18 @@ function App() {
       <h3>Categories</h3>
       <Category />
       <News />
+      <News />
+      <News />
+      <Category />
+      <News />
+      <News />
+      <News />
     </div>
     <div className="category-container">
-
+    <CategoryForm />
     </div>
     <div className="news-container">
-
+    {/* <NewsForm /> */}
     </div>
     </div>
     </div>

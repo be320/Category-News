@@ -30,3 +30,20 @@ h1{
   min-height: 200px;
   background-color: violet;
 }
+
+.category-row{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lookup{
+  margin-left: 10px;
+}
+
+.news-row{
+  margin-left: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
