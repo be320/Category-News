@@ -1,5 +1,5 @@
 import React from "react";
-import {Add,Folder,FolderOpen,Description} from '@material-ui/icons';
+import {Add,Folder,FolderOpen,Description,Edit,Delete} from '@material-ui/icons';
 
 const News = ({name}) => {
   return (
@@ -11,6 +11,15 @@ const News = ({name}) => {
       <div className="lookup">
         {name}
       </div>
+      <div className="lookup-action">
+      <div className="lookup-edit">
+        <Edit />
+      </div>
+      <div className="lookup-delete">
+        <Delete />
+      </div>
+      </div>
+      
     </div>
   );
 };

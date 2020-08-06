@@ -79,6 +79,22 @@ h2{
   height: 80%;
 }
 
+.lookup-action{
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 5px;
+  justify-content: space-between;
+}
+
+.lookup-delete:hover{
+  color: #e64a19;
+}
+
+.lookup-edit:hover{
+  color: #007acc;
+}
+
 ::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px #3c3c3c;
   border-radius: 10px;
