@@ -17,7 +17,47 @@ function App() {
     {
       "category": "Sports",
       "news": ["Wrestling","horses","swimming"]
-    }
+    },
+    {
+      "category": "Weather",
+      "news": ["Hot","cold","windy"]
+    },
+    {
+      "category": "Sports",
+      "news": ["Wrestling","horses","swimming"]
+    },
+    {
+      "category": "Weather",
+      "news": ["Hot","cold","windy"]
+    },
+    {
+      "category": "Sports",
+      "news": ["Wrestling","horses","swimming"]
+    },
+    {
+      "category": "Weather",
+      "news": ["Hot","cold","windy"]
+    },
+    {
+      "category": "Sports",
+      "news": ["Wrestling","horses","swimming"]
+    },
+    {
+      "category": "Weather",
+      "news": ["Hot","cold","windy"]
+    },
+    {
+      "category": "Sports",
+      "news": ["Wrestling","horses","swimming"]
+    },
+    {
+      "category": "Weather",
+      "news": ["Hot","cold","windy"]
+    },
+    {
+      "category": "Sports",
+      "news": ["Wrestling","horses","swimming"]
+    },
   ]
 
   const load = async () => {
@@ -35,7 +75,8 @@ function App() {
     <h1>Category News</h1>
     <div className="container-row">
     <div className="folder-structure">
-      <h3>Categories</h3>
+      <h2>Categories</h2>
+      <div className="category-scroll">
       {
         data.map((d,index)=>{
           return(
@@ -43,6 +84,7 @@ function App() {
           )
         })
       }
+      </div>
     </div>
     <div className="category-container">
     <CategoryForm />

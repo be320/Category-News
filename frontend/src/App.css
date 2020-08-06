@@ -10,6 +10,12 @@
 h1{
   align-self: center;
   color: #fff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 70px;
+}
+
+h2{
+  color: #c26c62;
 }
 
 .container-row{
@@ -20,10 +26,11 @@ h1{
 
 .folder-structure{
   min-width: 300px;
-  min-height: 200px;
+  max-height: 500px;
   background-color: #3c3c3c;
   color: whitesmoke;
   padding: 10px;
+  border-radius: 10px; 
 }
 
 .category-container{
@@ -47,11 +54,13 @@ h1{
 .category-row:hover{
   background-color: #37373d;
   cursor: pointer;
+  color: #bb9d16;
 }
 
 .lookup{
   margin-left: 10px;
 }
+
 
 .news-row{
   margin-left: 40px;
@@ -62,4 +71,27 @@ h1{
 .news-row:hover{
   background-color: #37373d;
   cursor: pointer;
+  color: #ad8f07;
+}
+
+.category-scroll{
+  overflow-y: auto;
+  height: 80%;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #3c3c3c;
+  border-radius: 10px;
+  background-color: #3c3c3c;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #3c3c3c;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px #3c3c3c;
+  background-color: #303035;
 }
