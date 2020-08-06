@@ -3,8 +3,12 @@ import React from 'react';
 const CategoryForm = () => {
 
     return(
-        <div>
-           <h3>Add Category</h3> 
+        <div className="category-form-container">
+           <h2>Add Category</h2> 
+           <input placeholder="category" />
+           <div className="add-category">
+            Add Category
+           </div>
         </div>
     );
 

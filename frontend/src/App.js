@@ -86,12 +86,8 @@ function App() {
       }
       </div>
     </div>
-    <div className="category-container">
     <CategoryForm />
-    </div>
-    <div className="news-container">
-    {/* <NewsForm /> */}
-    </div>
+    <NewsForm />
     </div>
     </div>
   );

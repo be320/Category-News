@@ -33,10 +33,30 @@ h2{
   border-radius: 10px; 
 }
 
-.category-container{
-  min-width: 200px;
-  min-height: 200px;
-  background-color: blue;
+.news-form-container{
+  align-self: center;
+  min-width: 300px;
+  max-height: 500px;
+  background-color: #3c3c3c;
+  color: whitesmoke;
+  padding: 30px;
+  border-radius: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-form-container{
+  align-self: center;
+  min-width: 300px;
+  max-height: 250px;
+  background-color: #3c3c3c;
+  color: whitesmoke;
+  padding: 30px;
+  border-radius: 10px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .news-container{
@@ -93,6 +113,34 @@ h2{
 
 .lookup-edit:hover{
   color: #007acc;
+}
+
+input{
+  padding: 5px;
+  margin-top:5px;
+  font-size: 18px;
+  background-color: #37373d;
+  color: whitesmoke;
+  outline: none;
+  border-radius: 10px;
+}
+
+.add-category{
+  margin-top: 30px;
+  background-color: #007acc;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.add-category:hover{
+  background-color: #0e87d8;
+}
+
+.choose-categories{
+  margin-top: 20px;
+  align-self: flex-start;
+  margin-right: auto;
 }
 
 ::-webkit-scrollbar-track {

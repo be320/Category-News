@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {KeyboardArrowRight,KeyboardArrowDown,Folder,FolderOpen} from '@material-ui/icons'
+import {KeyboardArrowRight,KeyboardArrowDown,Folder,FolderOpen,Edit,Delete} from '@material-ui/icons'
 import News from './News'
 
 const Category = ({name,news}) => {
@@ -22,7 +22,14 @@ const Category = ({name,news}) => {
     <div className="lookup">
         <p>{name}</p>
     </div>
-    
+    <div className="lookup-action">
+      <div className="lookup-edit">
+        <Edit />
+      </div>
+      <div className="lookup-delete">
+        <Delete />
+      </div>
+      </div>
     </div>
         {
             open? (news.map((n,index)=>{
