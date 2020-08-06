@@ -1,10 +1,15 @@
 .container{
   display: flex;
   flex-direction: column;
+  background-color: #1e1e1e;
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
 }
 
 h1{
   align-self: center;
+  color: #fff;
 }
 
 .container-row{
@@ -14,9 +19,11 @@ h1{
 }
 
 .folder-structure{
-  min-width: 200px;
+  min-width: 300px;
   min-height: 200px;
-  background-color: aqua;
+  background-color: #3c3c3c;
+  color: whitesmoke;
+  padding: 10px;
 }
 
 .category-container{
@@ -37,6 +44,11 @@ h1{
   align-items: center;
 }
 
+.category-row:hover{
+  background-color: #37373d;
+  cursor: pointer;
+}
+
 .lookup{
   margin-left: 10px;
 }
@@ -45,5 +57,9 @@ h1{
   margin-left: 40px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+}
+
+.news-row:hover{
+  background-color: #37373d;
+  cursor: pointer;
 }

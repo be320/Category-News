@@ -1,7 +1,7 @@
 import React from "react";
 import {Add,Folder,FolderOpen,Description} from '@material-ui/icons';
 
-const News = () => {
+const News = ({name}) => {
   return (
     <div className="news-row">
     
@@ -9,7 +9,7 @@ const News = () => {
         <Description />
       </div>
       <div className="lookup">
-        <p>Weather</p>
+        {name}
       </div>
     </div>
   );
