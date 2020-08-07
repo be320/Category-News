@@ -59,11 +59,7 @@ h2{
   align-items: center;
 }
 
-.news-container{
-  min-width: 200px;
-  min-height: 200px;
-  background-color: violet;
-}
+
 
 .category-row{
   display: flex;
@@ -79,13 +75,6 @@ h2{
 
 .lookup{
   margin-left: 10px;
-}
-
-
-.news-row:hover{
-  background-color: #37373d;
-  cursor: pointer;
-  color: #ad8f07;
 }
 
 
@@ -144,13 +133,13 @@ input{
   flex-direction: column;
   width: 60%;
   padding-left: 70px;
-  background-color: #3c3c3c;
   border-radius: 15px;
 }
 
 .selected-category{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-left: 10px;
+  color: #007acc;
 }
 
 .map-head{
@@ -165,6 +154,9 @@ input{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  background-color: #3c3c3c;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .map-subcategories{
@@ -172,21 +164,80 @@ input{
   flex-direction: row;
   overflow-x: auto;
   justify-content: space-evenly;
+  width:100%;
+}
+
+.news-container{
+  background-color: #3c3c3c;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  border-radius: 20px;
+  margin-top: 30px;
+  max-height: 40%;
+}
+
+.news-container:hover{
+  background-color: #4e4e4e;
+  cursor: pointer;
+}
+
+.news-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.news-body{
+  display: flex;
+  flex-direction: column;
+}
+
+.news-title{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 18px;
+}
+
+.news-author{
+  color: #929292;
+  margin-top: 10px;
+}
+
+.news-description{
+  margin-top: 10px;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+.news-image{
+  padding: 30px;
+  border: 10px;
+  border-radius: 40px;
+}
+
+.all-news{
+  overflow-y: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.subcategory{
+  margin-left: 50px;
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px #1e1e1e;
+  -webkit-box-shadow: inset 0 0 6px #3c3c3c;
   border-radius: 10px;
-  background-color: #1e1e1e;
+  background-color: #3c3c3c;
 }
 
 ::-webkit-scrollbar {
   width: 12px;
-  background-color: #1e1e1e;
+  background-color: #3c3c3c;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px #3c3c3c;
-  background-color: #3c3c3c;
+  background-color: #1e1e1e;
 }

@@ -4,6 +4,7 @@ import Category from './sideComponents/Category';
 import axios from 'axios';
 import Header from './sideComponents/Header';
 import Map from './sideComponents/Map';
+import News from './sideComponents/News';
 
 function App() {
 
@@ -45,6 +46,13 @@ function App() {
     </div>
     <div className="board">
     <Map />
+    <div className="all-news">
+    <News />
+    <News />
+    <News />
+    <News />
+    <News />
+    </div>
     </div>
     </div>
     </div>

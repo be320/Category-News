@@ -14,9 +14,20 @@ const Map = () => {
         Movies > Tragedy > 2019 > Cristopher > Oscars
         </div>
         <div className="map-subcategories">
-        <p>SAW</p>
-        <p>SFSFJ</p>
-        <p>MovDFSDFie</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
+        <p className="subcategory">SAW</p>
         </div>
         </div>
     )
