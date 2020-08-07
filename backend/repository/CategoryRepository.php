@@ -14,8 +14,9 @@ class CategoryRepository
 
         try {
            $db = DBConnection::connect();
-           $stmt = $db->prepare("INSERT INTO category (name) VALUES (:name)");
+           $stmt = $db->prepare("INSERT INTO category (name,parent_id) VALUES (:name,:parent_id)");
            $stmt->bindValue(':name',$data['name']);
+           $stmt->bindValue(':parent_id',$data['parent_id']);
            $success = $stmt->execute();
         }
         catch(PDOException $e){
@@ -31,8 +32,8 @@ class CategoryRepository
         $success = false;
         try{
             $db = DBConnection::connect();
-            $stmt = $db->prepare("DELETE FROM category WHERE id = :id");
-            $stmt->bindValue(':id',$id);
+            $stmt = $db->prepare("DELETE FROM category WHERE category_id = :category_id");
+            $stmt->bindValue(':category_id',$id);
             $success = $stmt->execute();
         }
         catch (PDOException $e){
@@ -47,8 +48,8 @@ class CategoryRepository
         $result = null;
         try{
             $db = DBConnection::connect();
-            $stmt = $db->prepare("SELECT * FROM category WHERE id=:id");
-            $stmt->bindValue(':id',$id);
+            $stmt = $db->prepare("SELECT * FROM category WHERE category_id = :category_id");
+            $stmt->bindValue(':category_id',$id);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, Category::class);
             $result = $stmt->fetch();
@@ -65,9 +66,9 @@ class CategoryRepository
         $success = false;
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE category set name=:name where id = :id");
+            $stmt = $db->prepare("UPDATE category set name=:name where category_id = :category_id");
             $stmt->bindValue(':name', $category->getName());
-            $stmt->bindValue(':id', $category->getID());
+            $stmt->bindValue(':category_id', $category->getId());
             $success = $stmt->execute();
         }
         catch (PDOException $e){
