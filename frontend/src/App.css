@@ -3,15 +3,15 @@
   flex-direction: column;
   background-color: #1e1e1e;
   position: absolute;
-  min-height: 100%;
+  height: 100%;
   min-width: 100%;
+  color: whitesmoke;
 }
 
 h1{
   align-self: center;
   color: #fff;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin-bottom: 70px;
 }
 
 h2{
@@ -21,16 +21,16 @@ h2{
 .container-row{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  height: 80%;
+  padding-top: 20px;
 }
 
 .folder-structure{
   min-width: 300px;
-  max-height: 500px;
-  background-color: #3c3c3c;
+  margin-bottom: 0px;
   color: whitesmoke;
   padding: 10px;
-  border-radius: 10px; 
+  overflow-y: auto;
 }
 
 .news-form-container{
@@ -82,22 +82,12 @@ h2{
 }
 
 
-.news-row{
-  margin-left: 40px;
-  display: flex;
-  flex-direction: row;
-}
-
 .news-row:hover{
   background-color: #37373d;
   cursor: pointer;
   color: #ad8f07;
 }
 
-.category-scroll{
-  overflow-y: auto;
-  height: 80%;
-}
 
 .lookup-action{
   display: flex;
@@ -137,25 +127,66 @@ input{
   background-color: #0e87d8;
 }
 
+.header-container{
+  padding:20px;
+  height: 10%;
+  background-color: #302f2f;
+}
+
 .choose-categories{
   margin-top: 20px;
   align-self: flex-start;
   margin-right: auto;
 }
 
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px #3c3c3c;
-  border-radius: 10px;
+.board{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-left: 70px;
   background-color: #3c3c3c;
+  border-radius: 15px;
+}
+
+.selected-category{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: 10px;
+}
+
+.map-head{
+  display: flex;
+  flex-direction: row;
+  font-size: 40px;
+  align-self: flex-start;
+  padding-top:10px; 
+}
+
+.map-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.map-subcategories{
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  justify-content: space-evenly;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #1e1e1e;
+  border-radius: 10px;
+  background-color: #1e1e1e;
 }
 
 ::-webkit-scrollbar {
   width: 12px;
-  background-color: #3c3c3c;
+  background-color: #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px #3c3c3c;
-  background-color: #303035;
+  background-color: #3c3c3c;
 }

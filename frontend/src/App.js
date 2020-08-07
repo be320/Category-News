@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Category from './sideComponents/Category';
 import axios from 'axios';
-import CategoryForm from './sideComponents/CategoryForm'
-import NewsForm from './sideComponents/NewsForm'
+import Header from './sideComponents/Header';
+import Map from './sideComponents/Map';
 
 function App() {
 
@@ -17,47 +17,7 @@ function App() {
     {
       "category": "Sports",
       "news": ["Wrestling","horses","swimming"]
-    },
-    {
-      "category": "Weather",
-      "news": ["Hot","cold","windy"]
-    },
-    {
-      "category": "Sports",
-      "news": ["Wrestling","horses","swimming"]
-    },
-    {
-      "category": "Weather",
-      "news": ["Hot","cold","windy"]
-    },
-    {
-      "category": "Sports",
-      "news": ["Wrestling","horses","swimming"]
-    },
-    {
-      "category": "Weather",
-      "news": ["Hot","cold","windy"]
-    },
-    {
-      "category": "Sports",
-      "news": ["Wrestling","horses","swimming"]
-    },
-    {
-      "category": "Weather",
-      "news": ["Hot","cold","windy"]
-    },
-    {
-      "category": "Sports",
-      "news": ["Wrestling","horses","swimming"]
-    },
-    {
-      "category": "Weather",
-      "news": ["Hot","cold","windy"]
-    },
-    {
-      "category": "Sports",
-      "news": ["Wrestling","horses","swimming"]
-    },
+    }
   ]
 
   const load = async () => {
@@ -72,11 +32,9 @@ function App() {
 
   return (
     <div className="container">
-    <h1>Category News</h1>
+    <Header />
     <div className="container-row">
     <div className="folder-structure">
-      <h2>Categories</h2>
-      <div className="category-scroll">
       {
         data.map((d,index)=>{
           return(
@@ -84,10 +42,10 @@ function App() {
           )
         })
       }
-      </div>
     </div>
-    <CategoryForm />
-    <NewsForm />
+    <div className="board">
+    <Map />
+    </div>
     </div>
     </div>
   );

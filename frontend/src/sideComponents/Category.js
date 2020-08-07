@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {KeyboardArrowRight,KeyboardArrowDown,Folder,FolderOpen,Edit,Delete} from '@material-ui/icons'
+import {Book,Edit,Delete} from '@material-ui/icons'
 import News from './News'
 
 const Category = ({name,news}) => {
@@ -13,11 +13,8 @@ const Category = ({name,news}) => {
     return(
     <div> 
     <div className="category-row" onClick={clicked}>
-    <div className="lookup" >
-       { open?   <KeyboardArrowDown />: <KeyboardArrowRight/>}
-    </div>
     <div className="lookup">
-    { open?   <FolderOpen />: <Folder/>}
+    <Book />
     </div>
     <div className="lookup">
         <p>{name}</p>
@@ -31,13 +28,6 @@ const Category = ({name,news}) => {
       </div>
       </div>
     </div>
-        {
-            open? (news.map((n,index)=>{
-                return(
-                    <News key={index} name={n} />
-                )
-            })) : <div></div>
-        }
     </div>   
     )
     
