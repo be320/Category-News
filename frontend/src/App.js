@@ -27,6 +27,10 @@ function App() {
     setDump(data.data)
   }
 
+  const createCategory = async() => {
+    await axios.post('http://localhost/Category-News/backend/api/app.php')
+  }
+
   useEffect(()=>{
     load()
   },[])
