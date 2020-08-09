@@ -1,31 +1,31 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   background-color: #1e1e1e;
   position: absolute;
   height: 100%;
-  min-width: 100%;
+  max-width: 100%;
   color: whitesmoke;
 }
 
-h1{
+h1 {
   align-self: center;
   color: #fff;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
-h2{
+h2 {
   color: #c26c62;
 }
 
-.container-row{
+.container-row {
   display: flex;
   flex-direction: row;
   height: 80%;
   padding-top: 20px;
 }
 
-.folder-structure{
+.folder-structure {
   min-width: 300px;
   margin-bottom: 0px;
   color: whitesmoke;
@@ -33,70 +33,80 @@ h2{
   overflow-y: auto;
 }
 
-.news-form-container{
-  align-self: center;
-  min-width: 300px;
-  max-height: 500px;
-  background-color: #3c3c3c;
-  color: whitesmoke;
-  padding: 30px;
-  border-radius: 10px; 
+
+.parent-category-body{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
 }
 
-.category-form-container{
-  align-self: center;
-  min-width: 300px;
-  max-height: 250px;
-  background-color: #3c3c3c;
-  color: whitesmoke;
-  padding: 30px;
-  border-radius: 10px; 
+.category-form-container {
+  position: fixed;
   display: flex;
   flex-direction: column;
+  z-index: 5;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.select-category-scroll{
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height:80px;
+}
+
+.category-form-body{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(243, 241, 241);
+  padding:50px;
+  border-radius: 20px;
+  justify-content: center;
+  width: 22em;
 }
 
 
-
-.category-row{
+.category-row {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.category-row:hover{
+.category-row:hover {
   background-color: #37373d;
   cursor: pointer;
   color: #bb9d16;
 }
 
-.lookup{
+.lookup {
   margin-left: 10px;
 }
 
-
-.lookup-action{
+.lookup-action {
   display: flex;
   flex-direction: row;
   margin-left: auto;
-  margin-right: 5px;
-  justify-content: space-between;
+  margin-right: 0px;
+  justify-content: flex-end;
 }
 
-.lookup-delete:hover{
+.lookup-delete:hover {
   color: #e64a19;
 }
 
-.lookup-edit:hover{
+.lookup-edit:hover {
   color: #007acc;
 }
 
-input{
+input {
   padding: 5px;
-  margin-top:5px;
+  margin-top: 5px;
   font-size: 18px;
   background-color: #37373d;
   color: whitesmoke;
@@ -104,7 +114,7 @@ input{
   border-radius: 10px;
 }
 
-.add-category{
+.add-category {
   margin-top: 30px;
   background-color: #007acc;
   padding: 10px;
@@ -112,23 +122,96 @@ input{
   border-radius: 10px;
 }
 
-.add-category:hover{
+.add-category:hover {
   background-color: #0e87d8;
 }
 
-.header-container{
-  padding:20px;
+.header-container {
+  padding: 20px;
   height: 10%;
   background-color: #302f2f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.choose-categories{
+.header-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
+.add-category-button {
+  background-color: #007acc;
+  width:auto;
+  align-self: center;
+  padding: 15px;
+  border-radius: 15px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.add-category-button:hover {
+  background-color: #0485db;
+}
+
+.form-category-add{
+  background-color: #007acc;
+  align-self: center;
+  max-width: 150px;
+  padding: 15px;
+  border-radius: 15px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 19px;
+  cursor: pointer;
+  justify-self: center;
   margin-top: 20px;
-  align-self: flex-start;
-  margin-right: auto;
+}
+.form-category-cancel{
+  background-color: #e64a19;
+  align-self: center;
+  max-width: 150px;
+  padding: 15px;
+  border-radius: 15px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 19px;
+  cursor: pointer;
+  justify-self: center;
+  margin-top: 20px;
 }
 
-.board{
+.form-category-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  min-width: 100%;
+}
+
+.form-category-button:hover {
+  background-color: #0485db;
+}
+
+.add-news-button:hover {
+  background-color: rgb(3, 145, 3);
+}
+
+.add-news-button {
+  background-color: green;
+  align-self: center;
+  padding: 15px;
+  border-radius: 15px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 19px;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.choose-categories {
+  margin-top: 20px;
+}
+
+.board {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -136,21 +219,21 @@ input{
   border-radius: 15px;
 }
 
-.selected-category{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.selected-category {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-left: 10px;
   color: #007acc;
 }
 
-.map-head{
+.map-head {
   display: flex;
   flex-direction: row;
   font-size: 40px;
   align-self: flex-start;
-  padding-top:10px; 
+  padding-top: 10px;
 }
 
-.map-container{
+.map-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -159,15 +242,16 @@ input{
   border-radius: 20px;
 }
 
-.map-subcategories{
+.map-subcategories {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
   justify-content: space-evenly;
-  width:100%;
+  width: 100%;
+  padding-left: 5px;
 }
 
-.news-container{
+.news-container {
   background-color: #3c3c3c;
   padding-left: 20px;
   padding-right: 20px;
@@ -178,50 +262,52 @@ input{
   max-height: 40%;
 }
 
-.news-container:hover{
+.news-container:hover {
   background-color: #4e4e4e;
   cursor: pointer;
 }
 
-.news-row{
+.news-row {
   display: flex;
   flex-direction: row;
 }
 
-.news-body{
+.news-body {
   display: flex;
   flex-direction: column;
 }
 
-.news-title{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+.news-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 18px;
 }
 
-.news-author{
+.news-author {
   color: #929292;
   margin-top: 10px;
 }
 
-.news-description{
+.news-description {
   margin-top: 10px;
   max-height: 80px;
   overflow-y: auto;
 }
 
-.news-image{
-  padding: 30px;
+.news-image {
+  padding: 0px;
+  margin-top: 10px;
+  margin-left: 30px;
   border: 10px;
-  border-radius: 40px;
+  border-radius: 10px;
 }
 
-.all-news{
+.all-news {
   overflow-y: auto;
   margin-top: 20px;
   padding: 20px;
 }
 
-.subcategory{
+.subcategory {
   margin-left: 50px;
 }
 
@@ -233,6 +319,7 @@ input{
 
 ::-webkit-scrollbar {
   width: 12px;
+  border-radius: 10px;
   background-color: #3c3c3c;
 }
 

@@ -20,6 +20,14 @@ These new Notes both sport improvements to their cameras and S Pen functionality
     </div>
     </div>
     <div>
+    <div className="lookup-action">
+      <div className="lookup-edit">
+        <Edit />
+      </div>
+      <div className="lookup-delete">
+        <Delete />
+      </div>
+      </div>
     <img className="news-image" src="https://drive.google.com/uc?id=1Pec0bcKsuPLZ_MDzH4lgqn1IhS_6UgGR" alt="samsung" width="120px" height="120px"/>
     </div>
     </div>

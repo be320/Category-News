@@ -5,6 +5,8 @@ import axios from 'axios';
 import Header from './sideComponents/Header';
 import Map from './sideComponents/Map';
 import News from './sideComponents/News';
+import CategoryForm from './sideComponents/CategoryForm';
+import NewsForm from './sideComponents/NewsForm';
 
 function App() {
 
@@ -28,16 +30,23 @@ function App() {
   }
 
   const createCategory = async() => {
-    await axios.post('http://localhost/Category-News/backend/api/app.php')
+    const category = {
+      "name": "Sports",
+      "parent_id": 1
+    }
+
+   const response =  await axios.post('http://localhost/Category-News/backend/api/createCategory.php',category);
+   console.log(response);
   }
 
   useEffect(()=>{
-    load()
+    // load()
   },[])
 
   return (
     <div className="container">
-    <Header />
+    <Header /> 
+    <NewsForm />
     <div className="container-row">
     <div className="folder-structure">
       {
