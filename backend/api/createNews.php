@@ -1,5 +1,7 @@
 <?php
 require_once (__DIR__."/../repository/NewsRepository.php");
+require_once (__DIR__."/../repository/CategorizeRepository.php");
+require_once (__DIR__."/../repository/CategoryRepository.php");
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-Requested-With,Origin,Content-Type,Accept");
@@ -12,6 +14,7 @@ $image = $input['image'];
 $description = $input['description'];
 $author = $input['author'];
 $link = $input['link'];
+$categories = $input['categories'];
 
 
 if(!isset($title) || empty($title) ){
@@ -34,6 +37,10 @@ if( !isset($link) || empty($link) ){
     $hasErrors = true;
 }
 
+if( !isset($categories) || empty($categories) ){
+    $hasErrors = true;
+}
+
 if($hasErrors === true) {
     $response['status'] = 405;
     $response['message'] = "a parameter is empty";
@@ -42,14 +49,21 @@ if($hasErrors === true) {
 }
 
 $newsRepo = new NewsRepository();
+$categorizeRepo = new CategorizeRepository();
+$categoryRepo = new CategoryRepository();
 
 $success = false;
 if($hasErrors === false){
-    $success = $newsRepo->create($input);
+    //$success = $newsRepo->create($input);
+    foreach ($categories as $cat) {
+        $category = $categoryRepo->getByName($cat);
+        echo $category;
+    }
+
 }
-if($success){
-    $response['status'] = 202;
-    $response['message'] = "News added successfully";
-    echo json_encode($response);
-    exit();
-}
+//if($success){
+//    $response['status'] = 202;
+//    $response['message'] = "News added successfully";
+//    echo json_encode($response);
+//    exit();
+//}

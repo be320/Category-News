@@ -68,6 +68,22 @@ class CategoryRepository
         return $result;
     }
 
+    public function getByName($name): category
+    {
+        $result = null;
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM category WHERE name = :name");
+            $stmt->bindValue(':name', $name);
+            $stmt->execute();
+            $result = $stmt->fetch();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
     public function update($category): bool
     {
         $success = false;

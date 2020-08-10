@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -6,35 +6,99 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 import { TextField } from "@material-ui/core";
-import { ArrowBackIosRounded, ArrowForwardIosRounded } from "@material-ui/icons";
+import {
+  ArrowBackIosRounded,
+  ArrowForwardIosRounded
+} from "@material-ui/icons";
+import axios from "axios";
 
-const NewsForm = ({handleNewsForm}) => {
-  const [state, setState] = React.useState({
-    gilad: true,
-    jason: false,
-    antoine: false
-  });
+const NewsForm = ({ handleNewsForm }) => {
+  const [state, setState] = React.useState({});
+  const [counter, setCounter] = useState(0);
+  const [categories, setCategories] = useState([]);
+  const [news,setNews] = useState({});
+
+
+  const getCategories = async () => {
+    const response = await axios.get(
+      "http://localhost/Category-News/backend/api/getCategories.php"
+    );
+    setCategories(response.data);
+    const data = response.data;
+    var arr = {};
+    data.map((d)=>{
+      arr = {...arr,[d.name]:false}
+    })
+    setState(arr)
+  };
 
   const handleChange = event => {
     setState({ ...state, [event.target.name]: event.target.checked });
+    
+  };
+
+  const handleCounter = value => {
+    if (value < 0) value = categories.length - 1;
+    else if (value === categories.length) value = 0;
+    setCounter(value);
+  };
+
+  const increment = () => {
+    handleCounter(counter + 1);
+  };
+
+  const decrement = () => {
+    handleCounter(counter - 1);
+  };
+
+
+  const RenderCategories = () => {
+    if (categories.length > 0) {
+      return (
+        <FormControlLabel
+          control={
+            <Checkbox checked={state[categories[counter].name]} onChange={handleChange} name={categories[counter].name} />
+          }
+          label={categories[counter].name}
+          style={{ color: "#000" }}
+        />
+      );
+    } else {
+      return <></>;
+    }
   };
 
   const close = () => {
-    handleNewsForm(false)
+    handleNewsForm(false);
+  };
+
+  const handleNews = (event) => {
+    setNews({ ...news, [event.target.name]: event.target.value });
   }
 
-  const { gilad, jason, antoine } = state;
-  const error = [gilad, jason, antoine].filter(v => v).length !== 2;
+  const createNews = () => {
+    var chosen=[];
+    categories.map((cat,index)=>{
+      if(state[cat.name])
+        chosen.push(cat.name)
+    })
+    //send news and chosen
+  }
+
+  useEffect(() => {
+    getCategories();
+  },[]);
+
 
   return (
     <div className="category-form-container">
       <div className="category-form-body">
         <h2>News</h2>
-        <TextField label="Title" />
-        <TextField label="Description" />
-        <TextField label="Image URL" />
-        <TextField label="Author" />
-        <TextField label="Link URL" />
+        <TextField label="Title" name="title" onChange={handleNews} />
+        <TextField label="Description" name="description" onChange={handleNews} />
+        <TextField label="Image URL" name="image" onChange={handleNews} />
+        <TextField label="Author" name="author" onChange={handleNews} />
+        <TextField label="Link URL" name="link" onChange={handleNews} />
         <div className="choose-categories">
           <FormControl component="fieldset">
             <FormLabel component="legend" style={{ color: "#c26c62" }}>
@@ -42,21 +106,13 @@ const NewsForm = ({handleNewsForm}) => {
             </FormLabel>
             <FormGroup>
               <div className="choose-categories">
-                <div className="arrow">
+                <div className="arrow" onClick={decrement} >
                   <ArrowBackIosRounded style={{ color: "black" }} />
                 </div>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={gilad}
-                      onChange={handleChange}
-                      name="gilad"
-                    />
-                  }
-                  label="Gilad Gray"
-                  style={{ color: "#000" }}
-                />
-                <div className="arrow">
+
+                <RenderCategories />
+
+                <div className="arrow" onClick={increment} >
                   <ArrowForwardIosRounded style={{ color: "black" }} />
                 </div>
               </div>
@@ -67,8 +123,10 @@ const NewsForm = ({handleNewsForm}) => {
           </FormControl>
         </div>
         <div className="form-category-buttons">
-          <div className="form-category-add">Save</div>
-          <div className="form-category-cancel" onClick={close} >Cancel</div>
+          <div className="form-category-add" onClick={createNews} >Save</div>
+          <div className="form-category-cancel" onClick={close}>
+            Cancel
+          </div>
         </div>
       </div>
     </div>
