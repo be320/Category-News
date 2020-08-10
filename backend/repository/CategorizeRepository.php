@@ -45,10 +45,10 @@ class CategorizeRepository{
         $result = [];
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("SELECT * from $this->table qry JOIN category cat ON (qry.category_id = cat.category_id) JOIN news nws ON (qry.news_id = nws.news_id) WHERE qry.category_id=:category ");
+            $stmt = $db->prepare("SELECT n.title, n.image, n.description, n.author, n.link FROM news n inner join  category c on c.category_id = :category");
             $stmt->bindValue(':category',$category);
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, Category::class);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, News::class);
             $result =$stmt->fetchAll();
         }catch(PDOException $e){
             echo $e->getMessage();
@@ -61,8 +61,7 @@ class CategorizeRepository{
 
 }
 
-//SELECT category.OrderID, Customers.CustomerName
-//FROM Orders
-//INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+
 
 
