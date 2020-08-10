@@ -10,14 +10,15 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE IF NOT EXISTS `category` (
     `category_id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(255) NOT NULL,
-    `parent_id` int(11) NULL ,
+    `lft` int(11) NOT NULL ,
+    `rgt` int(11) NOT NULL ,
     PRIMARY KEY(`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
---Inserting the Master Category `news`
+-- Inserting the Master Category `news`
 
-INSERT INTO `category` (`name`,`parent_id`) VALUES ('news',NULL);
+INSERT INTO `category` (`name`,`lft`,`rgt`) VALUES ('news',1,2);
 
 
 -- Table structure for table `news`

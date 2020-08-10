@@ -4,7 +4,8 @@ class Category
 {
     protected $id;
     protected $name;
-    protected $parent_id;
+    protected $lft;
+    protected $rgt;
 
     public function __construct()
     {
@@ -37,16 +38,32 @@ class Category
     /**
      * @return mixed
      */
-    public function getParentId()
+    public function getLft()
     {
-        return $this->parent_id;
+        return $this->lft;
     }
 
     /**
-     * @param mixed $parent_id
+     * @return mixed
      */
-    public function setParentId($parent_id): void
+    public function getRgt()
     {
-        $this->parent_id = $parent_id;
+        return $this->rgt;
+    }
+
+    /**
+     * @param mixed $lft
+     */
+    public function setLft($lft): void
+    {
+        $this->lft = $lft;
+    }
+
+    /**
+     * @param mixed $rgt
+     */
+    public function setRgt($rgt): void
+    {
+        $this->rgt = $rgt;
     }
 }

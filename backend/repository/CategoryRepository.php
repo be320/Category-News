@@ -14,9 +14,19 @@ class CategoryRepository
 
         try {
            $db = DBConnection::connect();
-           $stmt = $db->prepare("INSERT INTO category (name,parent_id) VALUES (:name,:parent_id)");
+           $stmt = $db->prepare("LOCK TABLE category WRITE");
+           $stmt->execute();
+           $stmt = $db->prepare("SELECT @myLeft := lft FROM category WHERE name = :name ");
+           $stmt->bindValue(':name',$data['parent_name']);
+           $stmt->execute();
+           $stmt = $db->prepare("UPDATE category SET rgt = rgt + 2 WHERE rgt > @myLeft");
+           $stmt->execute();
+           $stmt = $db->prepare("UPDATE category SET lft = lft + 2 WHERE lft > @myLeft");
+           $stmt->execute();
+           $stmt = $db->prepare("INSERT INTO category(name, lft, rgt) VALUES(:name, @myLeft + 1, @myLeft + 2)");
            $stmt->bindValue(':name',$data['name']);
-           $stmt->bindValue(':parent_id',$data['parent_id']);
+           $stmt->execute();
+           $stmt = $db->prepare("UNLOCK TABLES");
            $success = $stmt->execute();
         }
         catch(PDOException $e){

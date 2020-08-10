@@ -11,13 +11,13 @@ $input = json_decode($inputJSON, true);
 $hasErrors = false;
 
 $name = $input['name'];
-$parent_id = $input['parent_id'];
+$parent_name = $input['parent_name'];
 
 if(!isset($name) || empty($name) ){
     $hasErrors = true;
 }
 
-if( !isset($parent_id) || empty($parent_id) ){
+if( !isset($parent_name) || empty($parent_name) ){
     $hasErrors = true;
 }
 
