@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {FeaturedPlayList} from '@material-ui/icons'
 import {Edit,Delete} from '@material-ui/icons';
 import axios from "axios";
-const Map = ({handleCategoryForm}) => {
+const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
 
-    const [title,setTitle] = useState("news");
     const [children,setChildren] = useState([]);
     const [parents, setParents] = useState([])
 
@@ -13,14 +12,15 @@ const Map = ({handleCategoryForm}) => {
       }
 
     const changeTitle = (value) => {
-      setTitle(value)
-    }  
+      handleCategoryTitle(value)
+    }
+
 
       const load = async () => {
         const data = await axios.get(
           "http://localhost/Category-News/backend/api/getParentPath.php", {
             params: {
-              name: title
+              name: categoryTitle
             }
           }
         );
@@ -55,14 +55,14 @@ const Map = ({handleCategoryForm}) => {
 
       useEffect(()=>{
         load();
-      },[title])
+      },[categoryTitle])
     return(
         <div className="map-container">
         <div className="map-head">
         <div >
         <FeaturedPlayList fontSize="large" />
         </div>
-        <div className="selected-category">{title}</div>
+        <div className="selected-category">{categoryTitle}</div>
         <div className="lookup-action">
       <div className="lookup-edit" onClick={openForm} >
         <Edit />

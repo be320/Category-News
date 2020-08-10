@@ -12,6 +12,11 @@ function App() {
   const [mainCategories, setMainCategories] = useState([]);
   const [showNewsForm, setShowNewsForm] = useState(false);
   const [showCategoryForm, setShowCategoryForm] = useState(false);
+  const [categoryTitle,setCategoryTitle] = useState("news");
+
+  const handleCategoryTitle = (title) => {
+    setCategoryTitle(title)
+  }
 
   const handleNewsForm = value => {
     setShowNewsForm(value);
@@ -42,6 +47,7 @@ function App() {
           news={[]}
           key={index}
           handleCategoryForm={handleCategoryForm}
+          handleCategoryTitle={handleCategoryTitle}
         />
       ))
       )
@@ -71,7 +77,7 @@ function App() {
           <RenderCategories />
         </div>
         <div className="board">
-          <Map handleCategoryForm={handleCategoryForm} />
+          <Map handleCategoryForm={handleCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} />
           <div className="all-news">
             <News handleNewsForm={handleNewsForm} />
           </div>

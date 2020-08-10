@@ -2,21 +2,19 @@ import React,{useState} from 'react';
 import {Book,Edit,Delete} from '@material-ui/icons'
 import News from './News'
 
-const Category = ({name,news,handleCategoryForm}) => {
-
-    const [open,setOpen] = useState(false)
-
-    const clicked = () =>{
-        setOpen(!open)
-    }
+const Category = ({name,handleCategoryForm,handleCategoryTitle}) => {
 
     const openForm = () => {
       handleCategoryForm(true)
     }
 
+    const changeTitle = (value) => {
+      handleCategoryTitle(value)
+    }
+
     return(
     <div> 
-    <div className="category-row" onClick={clicked}>
+    <div className="category-row" onClick={()=>changeTitle(name)}>
     <div className="lookup">
     <Book />
     </div>
