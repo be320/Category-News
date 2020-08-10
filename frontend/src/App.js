@@ -10,7 +10,7 @@ import NewsForm from './sideComponents/NewsForm';
 
 function App() {
 
-  const [dump,setDump] = useState('');
+  const [mainCategories,setMainCategories] = useState([]);
   const [showNewsForm,setShowNewsForm] = useState(false);
   const [showCategoryForm,setShowCategoryForm] = useState(false);
 
@@ -34,9 +34,9 @@ function App() {
   }
 
   const load = async () => {
-    const data = await axios.get('http://localhost/Category-News/backend/api/app.php');
+    const data = await axios.get('http://localhost/Category-News/backend/api/getMainCategories.php');
     console.log(data.data)
-    setDump(data.data)
+    setMainCategories(data.data)
   }
 
   const createCategory = async() => {
@@ -50,7 +50,7 @@ function App() {
   }
 
   useEffect(()=>{
-    // load()
+    load()
   },[])
 
   return (
@@ -69,7 +69,7 @@ function App() {
       }
     </div>
     <div className="board">
-    <Map />
+    <Map handleCategoryForm={handleCategoryForm} />
     <div className="all-news">
     <News  handleNewsForm={handleNewsForm} />
     </div>

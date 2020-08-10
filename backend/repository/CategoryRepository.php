@@ -105,6 +105,30 @@ class CategoryRepository
 
     }
 
+    public function getMainCategories(): array
+    {
+        $result = [];
+        try {
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT node.name, (COUNT(parent.name) - 1)  AS depth FROM category AS node,category AS parent WHERE node.lft BETWEEN parent.lft AND parent.rgt GROUP BY node.name HAVING depth = 1 ORDER BY node.lft ");
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+        }catch(PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+
+    }
+
+//SELECT node.name, (COUNT(parent.name) - 1) AS depth
+//FROM nested_category AS node,
+//nested_category AS parent
+//WHERE node.lft BETWEEN parent.lft AND parent.rgt
+//GROUP BY node.name
+//ORDER BY node.lft;
+
+
     public function checkExist($id): bool
     {
         $result = $this->getById($id);

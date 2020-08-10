@@ -97,6 +97,14 @@ h2 {
   justify-content: flex-end;
 }
 
+.lookup-delete{
+  cursor: pointer;
+}
+
+.lookup-edit{
+  cursor: pointer;
+}
+
 .lookup-delete:hover {
   color: #e64a19;
 }
@@ -245,7 +253,6 @@ input {
   display: flex;
   flex-direction: row;
   font-size: 40px;
-  align-self: flex-start;
   padding-top: 10px;
 }
 

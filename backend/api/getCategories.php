@@ -16,8 +16,4 @@ $categories = $categoryRepo->getAll();
 
 echo json_encode($categories);
 
-//$response['status'] = 202;
-//$response['data'] = $categories;
-//$response['message'] = "Category added successfully";
-//echo json_encode($response);
 exit();
