@@ -11,6 +11,8 @@ import NewsForm from './sideComponents/NewsForm';
 function App() {
 
   const [dump,setDump] = useState('');
+  const [showNewsForm,setShowNewsForm] = useState(false);
+  const [showCategoryForm,setShowCategoryForm] = useState(false);
 
   const data = [
     {
@@ -22,6 +24,14 @@ function App() {
       "news": ["Wrestling","horses","swimming"]
     }
   ]
+
+  const handleNewsForm = (value) => {
+    setShowNewsForm(value)
+  }
+
+  const handleCategoryForm = (value) => {
+    setShowCategoryForm(value)
+  }
 
   const load = async () => {
     const data = await axios.get('http://localhost/Category-News/backend/api/app.php');
@@ -45,14 +55,15 @@ function App() {
 
   return (
     <div className="container">
-    <Header /> 
-    <NewsForm />
+    <Header  handleNewsForm={handleNewsForm}  handleCategoryForm={handleCategoryForm} /> 
+    { showNewsForm? <NewsForm handleNewsForm={handleNewsForm} /> : <></>}
+    { showCategoryForm? <CategoryForm handleCategoryForm={handleCategoryForm} />: <></>}
     <div className="container-row">
     <div className="folder-structure">
       {
         data.map((d,index)=>{
           return(
-            <Category name={d.category} news={d.news} key={index}/>
+            <Category name={d.category} news={d.news} key={index} handleCategoryForm={handleCategoryForm}  />
           )
         })
       }
@@ -60,11 +71,7 @@ function App() {
     <div className="board">
     <Map />
     <div className="all-news">
-    <News />
-    <News />
-    <News />
-    <News />
-    <News />
+    <News  handleNewsForm={handleNewsForm} />
     </div>
     </div>
     </div>

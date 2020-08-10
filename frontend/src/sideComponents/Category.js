@@ -2,12 +2,16 @@ import React,{useState} from 'react';
 import {Book,Edit,Delete} from '@material-ui/icons'
 import News from './News'
 
-const Category = ({name,news}) => {
+const Category = ({name,news,handleCategoryForm}) => {
 
     const [open,setOpen] = useState(false)
 
     const clicked = () =>{
         setOpen(!open)
+    }
+
+    const openForm = () => {
+      handleCategoryForm(true)
     }
 
     return(
@@ -20,7 +24,7 @@ const Category = ({name,news}) => {
         <p>{name}</p>
     </div>
     <div className="lookup-action">
-      <div className="lookup-edit">
+      <div className="lookup-edit" onClick={openForm} >
         <Edit />
       </div>
       <div className="lookup-delete">

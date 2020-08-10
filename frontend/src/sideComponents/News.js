@@ -1,7 +1,13 @@
 import React from "react";
-import {Add,Folder,FolderOpen,Description,Edit,Delete} from '@material-ui/icons';
+import {Edit,Delete} from '@material-ui/icons';
 
-const News = ({name}) => {
+const News = ({name, handleNewsForm}) => {
+
+
+  const openForm = () => {
+    handleNewsForm(true)
+  }
+
   return (
     <div className="news-container">
     <div className="news-row">
@@ -21,7 +27,7 @@ These new Notes both sport improvements to their cameras and S Pen functionality
     </div>
     <div>
     <div className="lookup-action">
-      <div className="lookup-edit">
+      <div className="lookup-edit" onClick={openForm} >
         <Edit />
       </div>
       <div className="lookup-delete">

@@ -36,7 +36,8 @@ h2 {
 
 .parent-category-body{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 .category-form-container {
@@ -207,8 +208,23 @@ input {
   cursor: pointer;
 }
 
+.arrow{
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+.arrow:hover{
+  background-color: #c5c4c4;
+}
+
 .choose-categories {
   margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .board {
@@ -259,7 +275,7 @@ input {
   padding-bottom: 40px;
   border-radius: 20px;
   margin-top: 30px;
-  max-height: 40%;
+  max-height: 150px;
 }
 
 .news-container:hover {
