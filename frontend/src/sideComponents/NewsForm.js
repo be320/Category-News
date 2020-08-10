@@ -76,13 +76,23 @@ const NewsForm = ({ handleNewsForm }) => {
     setNews({ ...news, [event.target.name]: event.target.value });
   }
 
-  const createNews = () => {
+  const createNews = async() => {
     var chosen=[];
     categories.map((cat,index)=>{
       if(state[cat.name])
         chosen.push(cat.name)
     })
-    //send news and chosen
+    const data = {
+      categories: chosen,
+      news: news
+    }
+
+   const response = await axios.post(
+    "http://localhost/Category-News/backend/api/createNews.php",data
+  );
+  
+  console.log(response);
+
   }
 
   useEffect(() => {

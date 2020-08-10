@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="359e18db-217d-4673-857b-f4ede003b996" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api/createNews.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/createNews.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repository/CategoryRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/repository/CategoryRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/sideComponents/NewsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/sideComponents/NewsForm.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +29,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/createNews.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1064">
+            <state relative-caret-position="437">
               <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
             </state>
           </provider>
@@ -395,7 +394,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/createNews.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1064">
+        <state relative-caret-position="437">
           <caret line="56" column="6" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="6" />
         </state>
       </provider>
