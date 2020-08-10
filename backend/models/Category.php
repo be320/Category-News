@@ -2,7 +2,7 @@
 
 class Category
 {
-    protected $id;
+    protected $category_id;
     protected $name;
     protected $lft;
     protected $rgt;
@@ -14,9 +14,9 @@ class Category
     /**
      * @return mixed
      */
-    public function getId()
+    public function getCategoryId()
     {
-        return $this->id;
+        return $this->category_id;
     }
 
     /**

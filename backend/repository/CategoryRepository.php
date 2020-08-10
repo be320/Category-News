@@ -96,8 +96,7 @@ class CategoryRepository
             $db = DBConnection::connect();
             $stmt = $db->prepare("SELECT * from category");
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, Category::class);
-            $result =$stmt->fetchAll();
+            $result = $stmt->fetchAll();
         }catch(PDOException $e){
             echo $e->getMessage();
             exit();
