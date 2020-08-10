@@ -1,17 +1,68 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {FeaturedPlayList} from '@material-ui/icons'
 import {Edit,Delete} from '@material-ui/icons';
+import axios from "axios";
 const Map = ({handleCategoryForm}) => {
+
+    const [title,setTitle] = useState("news");
+    const [children,setChildren] = useState([]);
+    const [parents, setParents] = useState([])
+
     const openForm = () => {
         handleCategoryForm(true)
       }
+
+    const changeTitle = (value) => {
+      setTitle(value)
+    }  
+
+      const load = async () => {
+        const data = await axios.get(
+          "http://localhost/Category-News/backend/api/getParentPath.php", {
+            params: {
+              name: title
+            }
+          }
+        );
+        console.log(data.data)
+        setChildren(data.data.children)
+        setParents(data.data.parents)
+      }
+
+      const RenderChildren = () => {
+        if (children.length > 0) {
+          return (
+            children.map((d, index) => (
+              <p className="subcategory" onClick={()=>changeTitle(d['name'])} >{d['name']}</p>
+          ))
+          )
+        } else {
+          return <div></div>;
+        }
+      }
+
+      const RenderParents = () => {
+        if (parents.length > 0) {
+          return (
+            parents.map((d, index) => (
+              <p className="category-parent" onClick={()=>changeTitle(d['name'])} > > {d['name']}</p>
+          ))
+          )
+        } else {
+          return <div></div>;
+        }
+      }
+
+      useEffect(()=>{
+        load();
+      },[title])
     return(
         <div className="map-container">
         <div className="map-head">
         <div >
         <FeaturedPlayList fontSize="large" />
         </div>
-        <div className="selected-category">Weather</div>
+        <div className="selected-category">{title}</div>
         <div className="lookup-action">
       <div className="lookup-edit" onClick={openForm} >
         <Edit />
@@ -22,23 +73,10 @@ const Map = ({handleCategoryForm}) => {
       </div>
         </div>
         <div className="map-tree">
-        Movies > Tragedy > 2019 > Cristopher > Oscars
+        <RenderParents />
         </div>
         <div className="map-subcategories">
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
-        <p className="subcategory">SAW</p>
+        <RenderChildren />
         </div>
         </div>
     )

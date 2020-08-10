@@ -9,6 +9,7 @@ const News = ({name, handleNewsForm}) => {
   }
 
   return (
+    <a href="https://www.samsung.com/eg/smartphones/galaxy-note20/?page=home" style={{textDecoration:"none",color:"white"}}>
     <div className="news-container">
     <div className="news-row">
     <div className="news-body">
@@ -38,6 +39,7 @@ These new Notes both sport improvements to their cameras and S Pen functionality
     </div>
     </div>
     </div>
+    </a>
   );
 };
 

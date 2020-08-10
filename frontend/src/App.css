@@ -256,6 +256,24 @@ input {
   padding-top: 10px;
 }
 
+.map-tree{
+  display: flex;
+  flex-direction: row;
+}
+
+.subcategory:hover{
+  color: #bb9d16;
+}
+
+.category-parent{
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.category-parent:hover{
+  color: #bb9d16;
+}
+
 .map-container {
   display: flex;
   flex-direction: column;
@@ -332,6 +350,7 @@ input {
 
 .subcategory {
   margin-left: 50px;
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {

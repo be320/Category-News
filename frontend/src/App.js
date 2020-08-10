@@ -23,8 +23,13 @@ function App() {
 
   const load = async () => {
     const data = await axios.get(
-      "http://localhost/Category-News/backend/api/getMainCategories.php"
+      "http://localhost/Category-News/backend/api/getNearChildCategories.php", {
+        params: {
+          name: "news"
+        }
+      }
     );
+    console.log(data)
     setMainCategories(data.data);
   };
 
@@ -41,7 +46,7 @@ function App() {
       ))
       )
     } else {
-      return <div>hello</div>;
+      return <div></div>;
     }
   };
 
