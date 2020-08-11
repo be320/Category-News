@@ -16,6 +16,7 @@ const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
     }
 
 
+
       const load = async () => {
         const data = await axios.get(
           "http://localhost/Category-News/backend/api/getParentPath.php", {

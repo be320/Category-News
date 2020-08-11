@@ -40,15 +40,14 @@ class CategorizeRepository{
     }
 
 
-    public function getNewsInCategory($category): array
+    public function getNewsInCategory($categoryId): array
     {
         $result = [];
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("SELECT n.title, n.image, n.description, n.author, n.link FROM news n inner join  category c on c.category_id = :category");
-            $stmt->bindValue(':category',$category);
+            $stmt = $db->prepare("select n.* from news n inner join news_in_category nc on n.news_id = nc.news_id inner join category c on nc.category_id = :category GROUP BY n.title ");
+            $stmt->bindValue(':category',$categoryId);
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, News::class);
             $result =$stmt->fetchAll();
         }catch(PDOException $e){
             echo $e->getMessage();
@@ -57,6 +56,8 @@ class CategorizeRepository{
         return $result;
 
     }
+
+
 
 
 }

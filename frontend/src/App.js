@@ -13,6 +13,7 @@ function App() {
   const [showNewsForm, setShowNewsForm] = useState(false);
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [categoryTitle,setCategoryTitle] = useState("news");
+  const [news,setNews] = useState([]);
 
   const handleCategoryTitle = (title) => {
     setCategoryTitle(title)
@@ -26,6 +27,18 @@ function App() {
     setShowCategoryForm(value);
   };
 
+  const loadNews = async() => {
+    const response = await axios.get(
+      "http://localhost/Category-News/backend/api/getNews.php", {
+        params: {
+          title: categoryTitle
+        }
+      }
+    );
+    console.log(response.data)
+    setNews(response.data)
+  }
+
   const load = async () => {
     const data = await axios.get(
       "http://localhost/Category-News/backend/api/getNearChildCategories.php", {
@@ -37,6 +50,18 @@ function App() {
     console.log(data)
     setMainCategories(data.data);
   };
+
+  const RenderNews = () => {
+    if (news.length > 0) {
+      return (
+        news.map((n, index) => (
+          <News handleNewsForm={handleNewsForm} news={n} />
+      ))
+      )
+    } else {
+      return <div></div>;
+    }
+  }
 
   const RenderCategories = () => {
     if (mainCategories.length > 0) {
@@ -57,8 +82,9 @@ function App() {
   };
 
   useEffect(() => {
+    loadNews();
     load();
-  }, []);
+  }, [categoryTitle]);
 
   return (
     <div className="container">
@@ -79,7 +105,7 @@ function App() {
         <div className="board">
           <Map handleCategoryForm={handleCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} />
           <div className="all-news">
-            <News handleNewsForm={handleNewsForm} />
+          <RenderNews />
           </div>
         </div>
       </div>
