@@ -54,7 +54,7 @@ function App() {
     if (news.length > 0) {
       return (
         news.map((n, index) => (
-          <News handleNewsForm={handleNewsForm} news={n} />
+          <News handleNewsForm={handleNewsForm} news={n} loadNews={loadNews} />
       ))
       )
     } else {

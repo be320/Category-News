@@ -1,7 +1,8 @@
 import React from "react";
 import {Edit,Delete} from '@material-ui/icons';
+import axios from 'axios';
 
-const News = ({news, handleNewsForm}) => {
+const News = ({news, handleNewsForm,loadNews}) => {
 
 
   const openForm = () => {
@@ -10,6 +11,13 @@ const News = ({news, handleNewsForm}) => {
 
   const deleteNews = async() => {
 
+    const data = {
+      title: news.title
+    }
+    const response = await axios.post("http://localhost/Category-News/backend/api/deleteNews.php",
+      data);
+      console.log(response)
+      loadNews();
   }
 
   return (
@@ -34,7 +42,7 @@ const News = ({news, handleNewsForm}) => {
       <div className="lookup-edit" onClick={openForm} >
         <Edit />
       </div>
-      <div className="lookup-delete">
+      <div className="lookup-delete" onClick={deleteNews} >
         <Delete />
       </div>
       </div>

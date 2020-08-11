@@ -46,6 +46,22 @@ class NewsRepository
         return $success;
     }
 
+    public function deleteByTitle($title): bool
+    {
+        $success = false;
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("DELETE FROM news WHERE title = :title");
+            $stmt->bindValue(':title',$title);
+            $success = $stmt->execute();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $success;
+    }
+
     public function getById($id): news
     {
         $result = null;
