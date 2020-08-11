@@ -36,13 +36,23 @@ class CategoryRepository
         return $success;
     }
 
-    public function deleteById($id): bool
+    public function deleteByName($name): bool
     {
         $success = false;
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("DELETE FROM category WHERE category_id = :category_id");
-            $stmt->bindValue(':category_id', $id);
+            $stmt = $db->prepare("LOCK TABLE category WRITE");
+            $stmt->execute();
+            $stmt = $db->prepare("SELECT @myLeft := lft, @myRight := rgt, @myWidth := rgt - lft + 1 FROM category WHERE name = :name");
+            $stmt->bindValue(':name', $name);
+            $stmt->execute();
+            $stmt = $db->prepare("DELETE FROM category WHERE lft BETWEEN @myLeft AND @myRight");
+            $stmt->execute();
+            $stmt = $db->prepare("UPDATE category SET rgt = rgt - @myWidth WHERE rgt > @myRight");
+            $stmt->execute();
+            $stmt = $db->prepare("UPDATE category SET lft = lft - @myWidth WHERE lft > @myRight");
+            $stmt->execute();
+            $stmt = $db->prepare("UNLOCK TABLES");
             $success = $stmt->execute();
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -50,6 +60,9 @@ class CategoryRepository
         }
         return $success;
     }
+
+
+
 
     public function getById($id): category
     {

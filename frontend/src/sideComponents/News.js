@@ -9,9 +9,10 @@ const News = ({news, handleNewsForm}) => {
   }
 
   return (
-    <a href={news.link} style={{textDecoration:"none",color:"white"}}>
+   
     <div className="news-container">
     <div className="news-row">
+    <a href={news.link} style={{textDecoration:"none",color:"white"}}>
     <div className="news-body">
     <div className="news-title">
     {news.title}
@@ -23,6 +24,7 @@ const News = ({news, handleNewsForm}) => {
    {news.description}
     </div>
     </div>
+    </a>
     <div>
     <div className="lookup-action">
       <div className="lookup-edit" onClick={openForm} >
@@ -36,7 +38,7 @@ const News = ({news, handleNewsForm}) => {
     </div>
     </div>
     </div>
-    </a>
+    
   );
 };
 

@@ -15,6 +15,15 @@ const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
       handleCategoryTitle(value)
     }
 
+    const deleteCategory = async() =>{
+      const data = {
+        name: categoryTitle
+      }
+      const response = await axios.post("http://localhost/Category-News/backend/api/deleteCategory.php",
+      data);
+      console.log(response)
+    }
+
 
 
       const load = async () => {
@@ -68,7 +77,7 @@ const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
       <div className="lookup-edit" onClick={openForm} >
         <Edit />
       </div>
-      <div className="lookup-delete">
+      <div className="lookup-delete" onClick={deleteCategory} >
         <Delete />
       </div>
       </div>
