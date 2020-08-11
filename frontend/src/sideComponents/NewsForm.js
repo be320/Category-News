@@ -107,7 +107,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
   return (
     <div className="category-form-container">
       <div className="category-form-body">
-        <h2>News</h2>
+        <h2>Add News</h2>
         <TextField label="Title" name="title" onChange={handleNews} />
         <TextField label="Description" name="description" onChange={handleNews} />
         <TextField label="Image URL" name="image" onChange={handleNews} />

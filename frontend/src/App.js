@@ -8,17 +8,24 @@ import News from "./sideComponents/News";
 import CategoryForm from "./sideComponents/CategoryForm";
 import NewsForm from "./sideComponents/NewsForm";
 import EditCategoryForm from './sideComponents/EditCategoryForm';
+import EditNewsForm from './sideComponents/EditNewsForm';
 
 function App() {
   const [mainCategories, setMainCategories] = useState([]);
   const [showNewsForm, setShowNewsForm] = useState(false);
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [editCategoryForm, setEditCategoryForm] = useState(false);
+  const [editNewsForm, setEditNewsForm] = useState(false);
   const [categoryTitle,setCategoryTitle] = useState("news");
+  const [newsTitle,setNewsTitle] = useState("");
   const [news,setNews] = useState([]);
 
   const handleCategoryTitle = (title) => {
     setCategoryTitle(title)
+  }
+
+  const handleNewsTitle = (title) => {
+    setNewsTitle(title)
   }
 
   const handleNewsForm = value => {
@@ -29,8 +36,13 @@ function App() {
     setShowCategoryForm(value);
   };
 
-  const handleEditCategoryForm = value => {
+  const handleEditCategoryForm = (value) => {
     setEditCategoryForm(value);
+  };
+
+  const handleEditNewsForm = (value,name="") => {
+    setEditNewsForm(value);
+    setNewsTitle(name);
   };
 
   const loadNews = async() => {
@@ -60,7 +72,7 @@ function App() {
     if (news.length > 0) {
       return (
         news.map((n, index) => (
-          <News handleNewsForm={handleNewsForm} news={n} loadNews={loadNews} />
+          <News handleEditNewsForm={handleEditNewsForm} news={n} loadNews={loadNews} handleNewsTitle={handleNewsTitle} />
       ))
       )
     } else {
@@ -107,6 +119,11 @@ function App() {
       )}
       {editCategoryForm ? (
         <EditCategoryForm handleEditCategoryForm={handleEditCategoryForm} load={load} loadNews={loadNews} categoryTitle={categoryTitle} handleCategoryTitle={handleCategoryTitle} />
+      ) : (
+        <></>
+      )}
+      {editNewsForm ? (
+        <EditNewsForm handleEditNewsForm={handleEditNewsForm} load={load} loadNews={loadNews} newsTitle={newsTitle}  />
       ) : (
         <></>
       )}
