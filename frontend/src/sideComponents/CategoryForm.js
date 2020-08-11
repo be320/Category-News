@@ -11,7 +11,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import axios from "axios";
 
-const CategoryForm = ({ handleCategoryForm,loadNews,load }) => {
+const CategoryForm = ({ handleCategoryForm,loadNews,load,handleCategoryTitle }) => {
   const [name, setName] = useState("");
   const [parentName, setParentName] = useState("news");
   const [categories, setCategories] = useState([]);
@@ -33,6 +33,10 @@ const CategoryForm = ({ handleCategoryForm,loadNews,load }) => {
   const handleName = event => {
     setName(event.target.value);
   };
+
+  const changeTitle = (value) => {
+    handleCategoryTitle(value)
+  }
 
 
   const handleParent = event => {
@@ -85,9 +89,9 @@ const CategoryForm = ({ handleCategoryForm,loadNews,load }) => {
       category
     );
     console.log(response);
-    handleCategoryForm(false);
     load();
-    loadNews();
+    changeTitle(name);
+    handleCategoryForm(false);
   };
 
   return (

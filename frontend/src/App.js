@@ -113,7 +113,7 @@ function App() {
       />
       {showNewsForm ? <NewsForm handleNewsForm={handleNewsForm} load={load} loadNews={loadNews} /> : <></>}
       {showCategoryForm ? (
-        <CategoryForm handleCategoryForm={handleCategoryForm} load={load} loadNews={loadNews} />
+        <CategoryForm handleCategoryForm={handleCategoryForm} load={load} loadNews={loadNews} handleCategoryTitle={handleCategoryTitle} />
       ) : (
         <></>
       )}
