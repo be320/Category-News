@@ -8,6 +8,10 @@ const News = ({news, handleNewsForm}) => {
     handleNewsForm(true)
   }
 
+  const deleteNews = async() => {
+
+  }
+
   return (
    
     <div className="news-container">

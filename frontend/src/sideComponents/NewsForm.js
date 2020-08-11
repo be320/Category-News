@@ -12,7 +12,7 @@ import {
 } from "@material-ui/icons";
 import axios from "axios";
 
-const NewsForm = ({ handleNewsForm }) => {
+const NewsForm = ({ handleNewsForm,load,loadNews }) => {
   const [state, setState] = React.useState({});
   const [counter, setCounter] = useState(0);
   const [categories, setCategories] = useState([]);
@@ -94,6 +94,8 @@ const NewsForm = ({ handleNewsForm }) => {
   console.log(response.data);
 
   handleNewsForm(false);
+  load();
+  loadNews();
 
   }
 

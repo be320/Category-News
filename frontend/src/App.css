@@ -8,6 +8,12 @@
   color: whitesmoke;
 }
 
+.category-row-body{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 h1 {
   align-self: center;
   color: #fff;
@@ -87,6 +93,7 @@ h2 {
 
 .lookup {
   margin-left: 10px;
+  align-self: center;
 }
 
 .lookup-action {

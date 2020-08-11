@@ -47,7 +47,6 @@ function App() {
         }
       }
     );
-    console.log(data)
     setMainCategories(data.data);
   };
 
@@ -73,6 +72,8 @@ function App() {
           key={index}
           handleCategoryForm={handleCategoryForm}
           handleCategoryTitle={handleCategoryTitle}
+          load={load}
+          loadNews={loadNews}
         />
       ))
       )
@@ -92,9 +93,9 @@ function App() {
         handleNewsForm={handleNewsForm}
         handleCategoryForm={handleCategoryForm}
       />
-      {showNewsForm ? <NewsForm handleNewsForm={handleNewsForm} /> : <></>}
+      {showNewsForm ? <NewsForm handleNewsForm={handleNewsForm} load={load} loadNews={loadNews} /> : <></>}
       {showCategoryForm ? (
-        <CategoryForm handleCategoryForm={handleCategoryForm} />
+        <CategoryForm handleCategoryForm={handleCategoryForm} load={load} loadNews={loadNews} />
       ) : (
         <></>
       )}
@@ -103,7 +104,7 @@ function App() {
           <RenderCategories />
         </div>
         <div className="board">
-          <Map handleCategoryForm={handleCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} />
+          <Map handleCategoryForm={handleCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} load={load} loadNews={loadNews} />
           <div className="all-news">
           <RenderNews />
           </div>

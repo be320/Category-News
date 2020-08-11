@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {FeaturedPlayList} from '@material-ui/icons'
 import {Edit,Delete} from '@material-ui/icons';
 import axios from "axios";
-const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
+const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle,load,loadNews}) => {
 
     const [children,setChildren] = useState([]);
     const [parents, setParents] = useState([])
@@ -22,11 +22,13 @@ const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
       const response = await axios.post("http://localhost/Category-News/backend/api/deleteCategory.php",
       data);
       console.log(response)
+      changeTitle("news")
+      load();
     }
 
 
 
-      const load = async () => {
+      const loadTitle = async () => {
         const data = await axios.get(
           "http://localhost/Category-News/backend/api/getParentPath.php", {
             params: {
@@ -34,7 +36,6 @@ const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
             }
           }
         );
-        console.log(data.data)
         setChildren(data.data.children)
         setParents(data.data.parents)
       }
@@ -64,7 +65,7 @@ const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
       }
 
       useEffect(()=>{
-        load();
+        loadTitle();
       },[categoryTitle])
     return(
         <div className="map-container">
@@ -73,14 +74,18 @@ const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle}) => {
         <FeaturedPlayList fontSize="large" />
         </div>
         <div className="selected-category">{categoryTitle}</div>
-        <div className="lookup-action">
-      <div className="lookup-edit" onClick={openForm} >
-        <Edit />
-      </div>
-      <div className="lookup-delete" onClick={deleteCategory} >
-        <Delete />
-      </div>
-      </div>
+        {
+          categoryTitle !=="news" ? <div className="lookup-action">
+        
+        <div className="lookup-edit" onClick={openForm} >
+          <Edit />
+        </div>
+        <div className="lookup-delete" onClick={deleteCategory} >
+          <Delete />
+        </div>
+        </div>  :  <></>
+        }
+        
         </div>
         <div className="map-tree">
         <RenderParents />
