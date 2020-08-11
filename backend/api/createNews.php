@@ -8,12 +8,12 @@ header("Access-Control-Allow-Headers: X-Requested-With,Origin,Content-Type,Accep
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
 $hasErrors = false;
-
-$title = $input['title'];
-$image = $input['image'];
-$description = $input['description'];
-$author = $input['author'];
-$link = $input['link'];
+$news= $input['news'];
+$title = $news['title'];
+$image = $news['image'];
+$description = $news['description'];
+$author = $news['author'];
+$link = $news['link'];
 $categories = $input['categories'];
 
 
@@ -54,16 +54,17 @@ $categoryRepo = new CategoryRepository();
 
 $success = false;
 if($hasErrors === false){
-    //$success = $newsRepo->create($input);
+    $success = $newsRepo->create($news);
+    $insertedNews = $newsRepo->getByName($title);
     foreach ($categories as $cat) {
         $category = $categoryRepo->getByName($cat);
-        echo $category;
+        $success =  $categorizeRepo->categorizeNews($category->getCategoryId(), $insertedNews[0]);
     }
 
 }
-//if($success){
-//    $response['status'] = 202;
-//    $response['message'] = "News added successfully";
-//    echo json_encode($response);
-//    exit();
-//}
+if($success){
+    $response['status'] = 202;
+    $response['message'] = "News: $title  added successfully";
+    echo json_encode($response);
+    exit();
+}

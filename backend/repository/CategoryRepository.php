@@ -76,6 +76,7 @@ class CategoryRepository
             $stmt = $db->prepare("SELECT * FROM category WHERE name = :name");
             $stmt->bindValue(':name', $name);
             $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_CLASS, Category::class);
             $result = $stmt->fetch();
         } catch (PDOException $e) {
             echo $e->getMessage();

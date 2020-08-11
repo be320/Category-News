@@ -43,7 +43,7 @@ if($hasErrors === false){
 }
 if($success){
     $response['status'] = 202;
-    $response['message'] = "Category added successfully";
+    $response['message'] = "Category $name added successfully";
     echo json_encode($response);
     exit();
 }

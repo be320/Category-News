@@ -91,7 +91,9 @@ const NewsForm = ({ handleNewsForm }) => {
     "http://localhost/Category-News/backend/api/createNews.php",data
   );
   
-  console.log(response);
+  console.log(response.data);
+
+  handleNewsForm(false);
 
   }
 

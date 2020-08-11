@@ -64,6 +64,23 @@ class NewsRepository
         return $result;
     }
 
+    public function getByName($title): array
+    {
+        $result = null;
+        try{
+            $db = DBConnection::connect();
+            $stmt = $db->prepare("SELECT * FROM news WHERE title = :title");
+            $stmt->bindValue(':title',$title);
+            $stmt->execute();
+            $result = $stmt->fetch();
+        }
+        catch (PDOException $e){
+            echo $e->getMessage();
+            exit();
+        }
+        return $result;
+    }
+
     public function update($news): bool
     {
         $success = false;
