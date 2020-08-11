@@ -7,11 +7,13 @@ import Map from "./sideComponents/Map";
 import News from "./sideComponents/News";
 import CategoryForm from "./sideComponents/CategoryForm";
 import NewsForm from "./sideComponents/NewsForm";
+import EditCategoryForm from './sideComponents/EditCategoryForm';
 
 function App() {
   const [mainCategories, setMainCategories] = useState([]);
   const [showNewsForm, setShowNewsForm] = useState(false);
   const [showCategoryForm, setShowCategoryForm] = useState(false);
+  const [editCategoryForm, setEditCategoryForm] = useState(false);
   const [categoryTitle,setCategoryTitle] = useState("news");
   const [news,setNews] = useState([]);
 
@@ -25,6 +27,10 @@ function App() {
 
   const handleCategoryForm = value => {
     setShowCategoryForm(value);
+  };
+
+  const handleEditCategoryForm = value => {
+    setEditCategoryForm(value);
   };
 
   const loadNews = async() => {
@@ -70,7 +76,7 @@ function App() {
           name={d["name"]}
           news={[]}
           key={index}
-          handleCategoryForm={handleCategoryForm}
+          handleEditCategoryForm={handleEditCategoryForm}
           handleCategoryTitle={handleCategoryTitle}
           load={load}
           loadNews={loadNews}
@@ -99,12 +105,17 @@ function App() {
       ) : (
         <></>
       )}
+      {editCategoryForm ? (
+        <EditCategoryForm handleEditCategoryForm={handleEditCategoryForm} load={load} loadNews={loadNews} categoryTitle={categoryTitle} handleCategoryTitle={handleCategoryTitle} />
+      ) : (
+        <></>
+      )}
       <div className="container-row">
         <div className="folder-structure">
           <RenderCategories />
         </div>
         <div className="board">
-          <Map handleCategoryForm={handleCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} load={load} loadNews={loadNews} />
+          <Map handleEditCategoryForm={handleEditCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} load={load} loadNews={loadNews} />
           <div className="all-news">
           <RenderNews />
           </div>

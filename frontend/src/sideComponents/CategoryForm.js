@@ -93,7 +93,7 @@ const CategoryForm = ({ handleCategoryForm,loadNews,load }) => {
   return (
     <div className="category-form-container">
       <div className="category-form-body">
-        <h2>Category</h2>
+        <h2>Add Category</h2>
         <TextField label="Category Name" onChange={handleName} />
         <div className="parent-category-body">
           <FormLabel component="legend" style={{ color: "#c26c62" }}>

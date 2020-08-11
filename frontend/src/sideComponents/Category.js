@@ -3,10 +3,10 @@ import {Book,Edit,Delete} from '@material-ui/icons'
 import News from './News'
 import axios from 'axios';
 
-const Category = ({name,handleCategoryForm,handleCategoryTitle,load,loadNews}) => {
+const Category = ({name,handleEditCategoryForm,handleCategoryTitle,load,loadNews}) => {
 
     const openForm = () => {
-      handleCategoryForm(true)
+      handleEditCategoryForm(true)
     }
 
     const changeTitle = (value) => {
@@ -26,8 +26,8 @@ const Category = ({name,handleCategoryForm,handleCategoryTitle,load,loadNews}) =
 
     return(
     <div> 
-     <div className="category-row" >
-    <div className="category-row-body" onClick={()=>changeTitle(name)}>
+     <div className="category-row" onClick={()=>changeTitle(name)} >
+    <div className="category-row-body">
     <div className="lookup">
     <Book />
     </div>

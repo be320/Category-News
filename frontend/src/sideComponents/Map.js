@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {FeaturedPlayList} from '@material-ui/icons'
 import {Edit,Delete} from '@material-ui/icons';
 import axios from "axios";
-const Map = ({handleCategoryForm, handleCategoryTitle,categoryTitle,load,loadNews}) => {
+const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle,load,loadNews}) => {
 
     const [children,setChildren] = useState([]);
     const [parents, setParents] = useState([])
 
     const openForm = () => {
-        handleCategoryForm(true)
+      handleEditCategoryForm(true)
       }
 
     const changeTitle = (value) => {

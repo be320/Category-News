@@ -98,14 +98,14 @@ class CategoryRepository
         return $result;
     }
 
-    public function update($category): bool
+    public function update($name,$oldName): bool
     {
         $success = false;
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE category set name=:name where category_id = :category_id");
-            $stmt->bindValue(':name', $category->getName());
-            $stmt->bindValue(':category_id', $category->getId());
+            $stmt = $db->prepare("UPDATE category set name=:name where name = :oldName");
+            $stmt->bindValue(':oldName', $oldName);
+            $stmt->bindValue(':name', $name);
             $success = $stmt->execute();
         } catch (PDOException $e) {
             echo $e->getMessage();
