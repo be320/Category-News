@@ -59,13 +59,14 @@ function App() {
 
   const load = async () => {
     const data = await axios.get(
-      "http://localhost/Category-News/backend/api/getNearChildCategories.php", {
+      "http://localhost/Category-News/backend/api/getParentPath.php", {
         params: {
           name: "news"
         }
       }
     );
-    setMainCategories(data.data);
+    setMainCategories(data.data.children);
+    console.log(data)
   };
 
   const RenderNews = () => {

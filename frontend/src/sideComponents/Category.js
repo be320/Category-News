@@ -21,7 +21,6 @@ const Category = ({name,handleEditCategoryForm,handleCategoryTitle,load,loadNews
       data);
       console.log(response)
       changeTitle("news");
-      load();
     }
 
     return(
