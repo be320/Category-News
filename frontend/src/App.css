@@ -8,12 +8,11 @@
   color: whitesmoke;
 }
 
-.category-row-body{
+.category-row-body {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-
 
 h1 {
   align-self: center;
@@ -41,8 +40,7 @@ h2 {
   overflow-y: auto;
 }
 
-
-.parent-category-body{
+.parent-category-body {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
@@ -74,41 +72,51 @@ h2 {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.news-form-body{
+.news-form-body {
   background-color: rgb(243, 241, 241);
   border-radius: 20px;
   justify-content: center;
   width: 60em;
-  padding:50px;
+  padding: 50px;
   overflow-y: auto;
 }
 
-.news-form-details{
+.news-form-details {
   display: flex;
   flex-direction: column;
-  max-height:30em;
+  max-height: 30em;
 }
 
-.select-category-scroll{
+.select-category-scroll {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  max-height:80px;
+  max-height: 80px;
 }
 
-.category-form-body{
+.category-form-body {
   display: flex;
   flex-direction: column;
   background-color: rgb(243, 241, 241);
-  padding:50px;
+  padding: 50px;
   border-radius: 20px;
   justify-content: center;
   width: 22em;
 }
 
+.logo {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  height: 170px;
+}
 
-
+.image-container {
+  width: 140px;
+  height: 170px;
+  z-index: 90;
+}
 
 .category-row {
   display: flex;
@@ -135,11 +143,11 @@ h2 {
   justify-content: flex-end;
 }
 
-.lookup-delete{
+.lookup-delete {
   cursor: pointer;
 }
 
-.lookup-edit{
+.lookup-edit {
   cursor: pointer;
 }
 
@@ -189,7 +197,7 @@ input {
 
 .add-category-button {
   background-color: #007acc;
-  width:auto;
+  width: auto;
   align-self: center;
   padding: 15px;
   border-radius: 15px;
@@ -202,7 +210,7 @@ input {
   background-color: #0485db;
 }
 
-.form-category-add{
+.form-category-add {
   background-color: #007acc;
   align-self: center;
   max-width: 150px;
@@ -214,7 +222,7 @@ input {
   justify-self: center;
   margin-top: 20px;
 }
-.form-category-cancel{
+.form-category-cancel {
   background-color: #e64a19;
   align-self: center;
   max-width: 150px;
@@ -255,14 +263,14 @@ input {
   cursor: pointer;
 }
 
-.arrow{
+.arrow {
   margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
   padding: 10px;
   border-radius: 10px;
 }
-.arrow:hover{
+.arrow:hover {
   background-color: #c5c4c4;
 }
 
@@ -295,21 +303,21 @@ input {
   padding-top: 10px;
 }
 
-.map-tree{
+.map-tree {
   display: flex;
   flex-direction: row;
 }
 
-.subcategory:hover{
+.subcategory:hover {
   color: #bb9d16;
 }
 
-.category-parent{
+.category-parent {
   margin-left: 10px;
   cursor: pointer;
 }
 
-.category-parent:hover{
+.category-parent:hover {
   color: #bb9d16;
 }
 

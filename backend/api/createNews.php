@@ -10,11 +10,11 @@ $input = json_decode($inputJSON, true);
 $hasErrors = false;
 $news= $input['news'];
 $title = $news['title'];
-$image = $news['image'];
 $description = $news['description'];
 $author = $news['author'];
 $link = $news['link'];
 $categories = $input['categories'];
+$image = $_FILES;
 
 
 if(!isset($title) || empty($title) ){

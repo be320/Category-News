@@ -7,17 +7,22 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 import { TextField } from "@material-ui/core";
 import TinyEditor from '../sideComponents/TinyEditor';
+import { Button } from 'react-bootstrap';
+import {FeaturedPlayList} from '@material-ui/icons'
+import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
 import {
   ArrowBackIosRounded,
   ArrowForwardIosRounded
 } from "@material-ui/icons";
 import axios from "axios";
+let fileInput = null
 
 const NewsForm = ({ handleNewsForm,load,loadNews }) => {
   const [state, setState] = React.useState({});
   const [counter, setCounter] = useState(0);
   const [categories, setCategories] = useState([]);
   const [news,setNews] = useState({});
+  const [logo,setLogo] = useState("");
 
 
   const getCategories = async () => {
@@ -85,7 +90,8 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
     })
     const data = {
       categories: chosen,
-      news: news
+      news: news,
+      logo: logo
     }
 
    const response = await axios.post(
@@ -97,7 +103,27 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
   handleNewsForm(false);
   load();
   loadNews();
+  }
 
+  const onDrop = (picture) => {
+    if(picture){
+    setLogo(picture)
+    }
+  }
+
+  const RenderImage = () =>{
+    if(logo)
+    {
+      return(
+        <img src={logo} alt="logo" style={{ maxWidth: '150px',maxHeight: '150px',marginLeft:'20px',marginTop:'10px'}}/>
+        )
+    }
+    else{
+      return(
+        <FeaturedPlayList fontSize="large" style={{color:'#fff',marginTop:'60px',marginLeft:'40px'}}/>
+          )
+    }
+  
   }
 
   useEffect(() => {
@@ -110,9 +136,22 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
       <div className="news-form-body">
       <div className="news-form-details" >
         <h2>Add News</h2>
+
+
+        <div className="logo" style={{backgroundColor:"#c3c3c9"}}>			
+           <div className = "image-container">
+		   <RenderImage />
+		   </div>
+		   <input
+			type="file" style={{display:'none'}}
+			 onChange={ (e) => onDrop(e.target.files[0]) }
+			 ref={input => fileInput = input} />
+		   <Button onClick={()=>fileInput.click()} style={{backgroundColor:'transparent',borderColor:'transparent',marginTop:'120px',zIndex: "99"}}  >
+			   <AddCircleOutline style={{color:'#fff',fontSize:'30px'}}/> 
+		   </Button>
+            </div>
         <TextField label="Title" name="title" onChange={handleNews} />
         <TextField label="Description" name="description" onChange={handleNews} />
-        <TextField label="Image URL" name="image" onChange={handleNews} />
         <TextField label="Author" name="author" onChange={handleNews} />
         <TextField label="Link URL" name="link" onChange={handleNews} />
         <FormLabel component="legend" style={{ color: "#c26c62",marginTop:"20px",marginBottom:"20px" }}>
