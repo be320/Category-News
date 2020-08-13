@@ -23,7 +23,8 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
   const [categories, setCategories] = useState([]);
   const [news,setNews] = useState({});
   const [logo,setLogo] = useState("");
-
+  const [imageFile,setImageFile] = useState("");
+  const [content,setContent] = useState("");
 
   const getCategories = async () => {
     const response = await axios.get(
@@ -91,7 +92,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
     const data = {
       categories: chosen,
       news: news,
-      logo: logo
+      imageFile: imageFile
     }
 
    const response = await axios.post(
@@ -107,7 +108,9 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
 
   const onDrop = (picture) => {
     if(picture){
-    setLogo(picture)
+    console.log(picture) 
+    setImageFile(picture)
+    setLogo(URL.createObjectURL(picture))
     }
   }
 
@@ -124,6 +127,10 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
           )
     }
   
+  }
+
+  const handleContent = (value) => {
+    setContent(value)
   }
 
   useEffect(() => {
@@ -157,7 +164,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
         <FormLabel component="legend" style={{ color: "#c26c62",marginTop:"20px",marginBottom:"20px" }}>
               Content
             </FormLabel>
-        <TinyEditor />
+        <TinyEditor  handleContent={handleContent} />
         <div className="choose-categories">
           <FormControl component="fieldset">
             <FormLabel component="legend" style={{ color: "#c26c62" }}>

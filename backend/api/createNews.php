@@ -9,6 +9,7 @@ $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
 $hasErrors = false;
 $news= $input['news'];
+$content = $input['content'];
 $title = $news['title'];
 $description = $news['description'];
 $author = $news['author'];
