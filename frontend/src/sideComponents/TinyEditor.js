@@ -4,7 +4,6 @@ import { Editor } from '@tinymce/tinymce-react';
 const TinyEditor = ({handleContent}) => {
 
    const handleEditorChange = (content, editor) => {
-        console.log('Content was updated:', content);
         handleContent(content)
       }
 

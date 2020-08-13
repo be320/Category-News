@@ -52,7 +52,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
 
   const increment = () => {
     handleCounter(counter + 1);
-  };
+  }; 
 
   const decrement = () => {
     handleCounter(counter - 1);
@@ -89,14 +89,19 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
       if(state[cat.name])
         chosen.push(cat.name)
     })
-    const data = {
-      categories: chosen,
-      news: news,
-      imageFile: imageFile
-    }
+
+    const formData = new FormData();
+    formData.append('imageFile',imageFile)
+    formData.append('categories',chosen)
+    formData.append('news',news)
+    formData.append('content',content)
 
    const response = await axios.post(
-    "http://localhost/Category-News/backend/api/createNews.php",data
+    "http://localhost/Category-News/backend/api/createNews.php",formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+  }
   );
   
   console.log(response.data);
@@ -153,7 +158,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
 			type="file" style={{display:'none'}}
 			 onChange={ (e) => onDrop(e.target.files[0]) }
 			 ref={input => fileInput = input} />
-		   <Button onClick={()=>fileInput.click()} style={{backgroundColor:'transparent',borderColor:'transparent',marginTop:'120px',zIndex: "99"}}  >
+		   <Button onClick={()=>fileInput.click()} className="add-image-btn"  >
 			   <AddCircleOutline style={{color:'#fff',fontSize:'30px'}}/> 
 		   </Button>
             </div>

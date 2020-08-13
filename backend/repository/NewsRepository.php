@@ -8,18 +8,19 @@ class NewsRepository
 {
     protected $table = 'news';
 
-    public function create($data): bool
+    public function create($data,$image,$content): bool
     {
         $success = false;
 
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("INSERT INTO news (title,image,description,author,link) VALUES (:title,:image,:description,:author,:link)");
+            $stmt = $db->prepare("INSERT INTO news (title,image,description,author,link,content) VALUES (:title,:image,:description,:author,:link,:content)");
             $stmt->bindValue(':title',$data['title']);
-            $stmt->bindValue(':image',$data['image']);
+            $stmt->bindValue(':image', $image['name']);
             $stmt->bindValue(':description',$data['description']);
             $stmt->bindValue(':author',$data['author']);
             $stmt->bindValue(':link',$data['link']);
+            $stmt->bindValue(':content',$content);
             $success = $stmt->execute();
         }
         catch(PDOException $e){

@@ -2,35 +2,44 @@
 require_once (__DIR__."/../repository/NewsRepository.php");
 require_once (__DIR__."/../repository/CategorizeRepository.php");
 require_once (__DIR__."/../repository/CategoryRepository.php");
+require_once (__DIR__."/../includes/uploadFile.php");
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: X-Requested-With,Origin,Content-Type,Accept");
 $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
 $hasErrors = false;
-$news= $input['news'];
-$content = $input['content'];
-$title = $news['title'];
-$description = $news['description'];
-$author = $news['author'];
-$link = $news['link'];
-$categories = $input['categories'];
-$image = $_FILES;
+//$news= $input['news'];
+//$content = $input['content'];
+//$categories = $input['categories'];
+//$image =  $input['imageFile'] ;
+//$title = $news['title'];
+//$description = $news['description'];
+//$author = $news['author'];
+//$link = $news['link'];
+echo ($input);
+//print_r($_FILES);
+exit();
 
 
 if(!isset($title) || empty($title) ){
     $hasErrors = true;
 }
 
-if( !isset($image) || empty($image) ){
+if(!isset($content) || empty($content) ){
     $hasErrors = true;
 }
+
 
 if( !isset($description) || empty($description) ){
     $hasErrors = true;
 }
 
 if( !isset($author) || empty($author) ){
+    $hasErrors = true;
+}
+
+if( !isset($image) || empty($image) ){
     $hasErrors = true;
 }
 
@@ -55,7 +64,7 @@ $categoryRepo = new CategoryRepository();
 
 $success = false;
 if($hasErrors === false){
-    $success = $newsRepo->create($news);
+    $success = $newsRepo->create($news,$image,$content);
     $insertedNews = $newsRepo->getByName($title);
     foreach ($categories as $cat) {
         $category = $categoryRepo->getByName($cat);
@@ -64,6 +73,7 @@ if($hasErrors === false){
 
 }
 if($success){
+    $filePath = uploadFile($image);
     $response['status'] = 202;
     $response['message'] = "News: $title  added successfully";
     echo json_encode($response);
