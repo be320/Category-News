@@ -19,6 +19,7 @@ h1 {
   align-self: center;
   color: #fff;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  cursor: pointer;
 }
 
 h2 {
@@ -325,6 +326,7 @@ input {
 .news-body {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .news-title {

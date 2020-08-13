@@ -62,7 +62,7 @@ class NewsRepository
         return $success;
     }
 
-    public function getById($id): news
+    public function getById($id): array
     {
         $result = null;
         try{
@@ -70,7 +70,6 @@ class NewsRepository
             $stmt = $db->prepare("SELECT * FROM news WHERE news_id = :news_id");
             $stmt->bindValue(':news_id',$id);
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_CLASS, News::class);
             $result = $stmt->fetch();
         }
         catch (PDOException $e){

@@ -2,11 +2,16 @@ import React from "react";
 import {Edit,Delete} from '@material-ui/icons';
 import axios from 'axios';
 
-const News = ({news, handleEditNewsForm,loadNews}) => {
+const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleNewsID}) => {
 
 
   const openForm = () => {
-    handleEditNewsForm(true,news.title)
+    handleEditNewsForm(true,news.news_id)
+  }
+
+  const openDetails = () => {
+     handleNewsID(news.news_id);
+     handleShowNewsDetails(true)
   }
 
   const deleteNews = async() => {
@@ -24,8 +29,7 @@ const News = ({news, handleEditNewsForm,loadNews}) => {
    
     <div className="news-container">
     <div className="news-row">
-    <a href={news.link} style={{textDecoration:"none",color:"white"}}>
-    <div className="news-body">
+    <div className="news-body" onClick={openDetails} >
     <div className="news-title">
     {news.title}
     </div>
@@ -36,7 +40,6 @@ const News = ({news, handleEditNewsForm,loadNews}) => {
    {news.description}
     </div>
     </div>
-    </a>
     <div className="left-news">
     <div className="lookup-action">
       <div className="lookup-edit" onClick={openForm} >

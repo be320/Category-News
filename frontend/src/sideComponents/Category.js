@@ -3,15 +3,16 @@ import {Book,Edit,Delete} from '@material-ui/icons'
 import News from './News'
 import axios from 'axios';
 
-const Category = ({name,handleEditCategoryForm,handleCategoryTitle,load,loadNews}) => {
+const Category = ({name,handleEditCategoryForm,handleCategoryTitle,load,loadNews,handleShowNewsDetails}) => {
 
     const openForm = () => {
       handleEditCategoryForm(true)
     }
 
-    const changeTitle = (value) => {
-      handleCategoryTitle(value)
-    }
+    const backHome = (value="") => {
+      handleCategoryTitle(value==="" ? name:value)
+      handleShowNewsDetails(false);
+   }
 
     const deleteCategory = async() =>{
       const data = {
@@ -20,12 +21,12 @@ const Category = ({name,handleEditCategoryForm,handleCategoryTitle,load,loadNews
       const response = await axios.post("http://localhost/Category-News/backend/api/deleteCategory.php",
       data);
       console.log(response)
-      changeTitle("news");
+      backHome("news");
     }
 
     return(
     <div> 
-     <div className="category-row" onClick={()=>changeTitle(name)} >
+     <div className="category-row" onClick={backHome} >
     <div className="category-row-body">
     <div className="lookup">
     <Book />
