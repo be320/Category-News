@@ -39,8 +39,8 @@ const EditNewsForm = ({
 
 
   return (
-    <div className="category-form-container">
-      <div className="category-form-body">
+    <div className="news-form-container">
+      <div className="news-form-body">
         <h2>Edit News</h2>
         <TextField label="Title" name="title" onChange={handleNews} />
         <TextField

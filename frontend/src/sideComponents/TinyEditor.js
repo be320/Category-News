@@ -8,11 +8,13 @@ const TinyEditor = () => {
       }
 
       return(
+          <div>
         <Editor
         apiKey="8qe1k8oszntwouo0m23pi3l500ygsg6vxidh530a3nebve0t"
         initialValue="<p>This is the initial content of the editor</p>"
         init={{
-          height: 500,
+          min_height: "1000",
+          resize: false,
           menubar: false,
           plugins: [
             'advlist autolink lists link image charmap print preview anchor',
@@ -26,6 +28,7 @@ const TinyEditor = () => {
         }}
         onEditorChange={handleEditorChange}
       />
+      </div>
       )
 }
 

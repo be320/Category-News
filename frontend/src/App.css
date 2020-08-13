@@ -61,6 +61,33 @@ h2 {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
 }
+.news-form-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.news-form-body{
+  background-color: rgb(243, 241, 241);
+  border-radius: 20px;
+  justify-content: center;
+  width: 60em;
+  padding:50px;
+  overflow-y: auto;
+}
+
+.news-form-details{
+  display: flex;
+  flex-direction: column;
+  max-height:30em;
+}
 
 .select-category-scroll{
   display: flex;
@@ -79,6 +106,8 @@ h2 {
   justify-content: center;
   width: 22em;
 }
+
+
 
 
 .category-row {
@@ -204,6 +233,7 @@ input {
   flex-wrap: wrap;
   justify-content: space-evenly;
   min-width: 100%;
+  margin-bottom: 20px;
 }
 
 .form-category-button:hover {

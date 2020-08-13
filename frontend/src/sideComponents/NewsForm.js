@@ -6,6 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 import { TextField } from "@material-ui/core";
+import TinyEditor from '../sideComponents/TinyEditor';
 import {
   ArrowBackIosRounded,
   ArrowForwardIosRounded
@@ -105,14 +106,19 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
 
 
   return (
-    <div className="category-form-container">
-      <div className="category-form-body">
+    <div className="news-form-container">
+      <div className="news-form-body">
+      <div className="news-form-details" >
         <h2>Add News</h2>
         <TextField label="Title" name="title" onChange={handleNews} />
         <TextField label="Description" name="description" onChange={handleNews} />
         <TextField label="Image URL" name="image" onChange={handleNews} />
         <TextField label="Author" name="author" onChange={handleNews} />
         <TextField label="Link URL" name="link" onChange={handleNews} />
+        <FormLabel component="legend" style={{ color: "#c26c62",marginTop:"20px",marginBottom:"20px" }}>
+              Content
+            </FormLabel>
+        <TinyEditor />
         <div className="choose-categories">
           <FormControl component="fieldset">
             <FormLabel component="legend" style={{ color: "#c26c62" }}>
@@ -131,9 +137,6 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
                 </div>
               </div>
             </FormGroup>
-            <FormHelperText style={{ color: "#000" }}>
-              Select one at least
-            </FormHelperText>
           </FormControl>
         </div>
         <div className="form-category-buttons">
@@ -141,6 +144,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
           <div className="form-category-cancel" onClick={close}>
             Cancel
           </div>
+        </div>
         </div>
       </div>
     </div>
