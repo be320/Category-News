@@ -49,7 +49,7 @@ const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleN
         <Delete />
       </div>
       </div>
-    <img className="news-image" src={news.image} alt="samsung" width="120px" height="120px"/>
+    <img className="news-image" src={'data:image/*;base64, ' + news.image} alt="samsung" width="120px" height="120px"/>
     </div>
     </div>
     </div>

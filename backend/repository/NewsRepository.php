@@ -16,7 +16,7 @@ class NewsRepository
             $db = DBConnection::connect();
             $stmt = $db->prepare("INSERT INTO news (title,image,description,author,link,content) VALUES (:title,:image,:description,:author,:link,:content)");
             $stmt->bindValue(':title',$data['title']);
-            $stmt->bindValue(':image', $image['name']);
+            $stmt->bindValue(':image', $image);
             $stmt->bindValue(':description',$data['description']);
             $stmt->bindValue(':author',$data['author']);
             $stmt->bindValue(':link',$data['link']);
