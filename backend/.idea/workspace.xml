@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="359e18db-217d-4673-857b-f4ede003b996" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../frontend/src/sideComponents/EditNewsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/sideComponents/EditNewsForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/sideComponents/NewsForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/sideComponents/NewsForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/sideComponents/TinyEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/sideComponents/TinyEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/editNews.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+            <state relative-caret-position="411">
+              <caret line="55" column="77" lean-forward="true" selection-start-line="55" selection-start-column="77" selection-end-line="55" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -40,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/createNews.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
+            <state relative-caret-position="133">
+              <caret line="10" selection-start-line="10" selection-end-line="17" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -91,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/repository/NewsRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1729">
-              <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+            <state relative-caret-position="437">
+              <caret line="110" column="41" lean-forward="true" selection-start-line="110" selection-start-column="41" selection-end-line="110" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -134,11 +132,11 @@
         <option value="$PROJECT_DIR$/api/deleteCategory.php" />
         <option value="$PROJECT_DIR$/api/deleteNews.php" />
         <option value="$PROJECT_DIR$/api/editCategory.php" />
-        <option value="$PROJECT_DIR$/api/editNews.php" />
         <option value="$PROJECT_DIR$/repository/CategoryRepository.php" />
         <option value="$PROJECT_DIR$/api/getSingleNews.php" />
         <option value="$PROJECT_DIR$/includes/uploadFile.php" />
         <option value="$PROJECT_DIR$/api/createNews.php" />
+        <option value="$PROJECT_DIR$/api/editNews.php" />
         <option value="$PROJECT_DIR$/repository/NewsRepository.php" />
       </list>
     </option>
@@ -178,6 +176,11 @@
               <item name="backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -229,7 +232,7 @@
       <workItem from="1597216086745" duration="1200000" />
       <workItem from="1597307619821" duration="11200000" />
       <workItem from="1597345041707" duration="2254000" />
-      <workItem from="1597408454680" duration="1806000" />
+      <workItem from="1597408454680" duration="2602000" />
     </task>
     <task id="LOCAL-00001" summary="DBConnection file implemented">
       <created>1596559874778</created>
@@ -312,11 +315,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71931000" />
+    <option name="totallyTimeSpent" value="72727000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18657719" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -475,13 +477,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repository/NewsRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1729">
-          <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/getSingleNews.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -491,15 +486,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/createNews.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="63" selection-start-line="3" selection-start-column="63" selection-end-line="3" selection-end-column="63" />
+        <state relative-caret-position="133">
+          <caret line="10" selection-start-line="10" selection-end-line="17" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/editNews.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        <state relative-caret-position="411">
+          <caret line="55" column="77" lean-forward="true" selection-start-line="55" selection-start-column="77" selection-end-line="55" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repository/NewsRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="110" column="41" lean-forward="true" selection-start-line="110" selection-start-column="41" selection-end-line="110" selection-end-column="41" />
         </state>
       </provider>
     </entry>
