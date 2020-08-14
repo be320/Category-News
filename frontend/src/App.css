@@ -16,7 +16,7 @@
 
 h1 {
   align-self: center;
-  color: #fff;
+  color: #bb9d16;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   cursor: pointer;
 }
@@ -383,6 +383,22 @@ input {
   font-size: 18px;
 }
 
+.news-details-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
+  color: #bb9d16;
+  width: 80%;
+}
+
+.news-content-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  /* font-size: 18px; */
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
 .news-author {
   color: #929292;
   margin-top: 10px;
@@ -400,6 +416,28 @@ input {
   margin-left: 30px;
   border: 10px;
   border-radius: 10px;
+}
+
+.news-details-image {
+  padding: 0px;
+  margin-top: 10px;
+  margin-left: 30px;
+  border: 10px;
+  border-radius: 10px;
+}
+
+.news-details-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.news-details-content {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 80%;
 }
 
 .all-news {
