@@ -9,12 +9,13 @@ import { TextField } from "@material-ui/core";
 import TinyEditor from '../sideComponents/TinyEditor';
 import { Button } from 'react-bootstrap';
 import {FeaturedPlayList} from '@material-ui/icons'
-import AddCircleOutline from '@material-ui/icons/AddCircleOutline'
+import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 import {
   ArrowBackIosRounded,
   ArrowForwardIosRounded
 } from "@material-ui/icons";
 import axios from "axios";
+const fileUpload = require('fuctbase64');
 let fileInput = null
 
 const NewsForm = ({ handleNewsForm,load,loadNews }) => {
@@ -23,7 +24,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
   const [categories, setCategories] = useState([]);
   const [news,setNews] = useState({});
   const [logo,setLogo] = useState("");
-  const [imageFile,setImageFile] = useState("");
+  const [image,setImage] = useState("");
   const [content,setContent] = useState("");
 
   const getCategories = async () => {
@@ -90,34 +91,40 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
         chosen.push(cat.name)
     })
 
-    const formData = new FormData();
-    formData.append('imageFile',imageFile)
-    formData.append('categories',chosen)
-    formData.append('news',news)
-    formData.append('content',content)
+    const data = {
+      categories: chosen,
+      news: news,
+      content: content,
+      image: image
+    }
 
+    console.log(data)
+    
    const response = await axios.post(
-    "http://localhost/Category-News/backend/api/createNews.php",formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-  }
+    "http://localhost/Category-News/backend/api/createNews.php",data
   );
-  
-  console.log(response.data);
+  console.log(response);
+
 
   handleNewsForm(false);
   load();
   loadNews();
   }
 
-  const onDrop = (picture) => {
+  const onDrop = async (picture,e) => {
     if(picture){
-    console.log(picture) 
-    setImageFile(picture)
     setLogo(URL.createObjectURL(picture))
+    imageEncoder(e)
     }
   }
+
+  const imageEncoder = (event) => 
+{
+    fileUpload(event)
+    .then((data) => {
+            setImage(data.base64);
+    })
+}
 
   const RenderImage = () =>{
     if(logo)
@@ -156,8 +163,8 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
 		   </div>
 		   <input
 			type="file" style={{display:'none'}}
-			 onChange={ (e) => onDrop(e.target.files[0]) }
-			 ref={input => fileInput = input} />
+			 onChange={ (e) => onDrop(e.target.files[0],e) }
+			 ref={input => (fileInput = input)} />
 		   <Button onClick={()=>fileInput.click()} className="add-image-btn"  >
 			   <AddCircleOutline style={{color:'#fff',fontSize:'30px'}}/> 
 		   </Button>
