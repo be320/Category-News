@@ -1,7 +1,7 @@
 import React from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
-const TinyEditor = ({handleContent}) => {
+const TinyEditor = ({handleContent,oldContent}) => {
 
    const handleEditorChange = (content, editor) => {
         handleContent(content)
@@ -11,7 +11,7 @@ const TinyEditor = ({handleContent}) => {
           <div>
         <Editor
         apiKey="8qe1k8oszntwouo0m23pi3l500ygsg6vxidh530a3nebve0t"
-        initialValue="<p>This is the initial content of the editor</p>"
+        initialValue={oldContent ? oldContent :"<p>Enter The content of Your News here</p>"}
         init={{
           min_height: "1000",
           resize: false,

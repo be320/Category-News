@@ -7,15 +7,16 @@ $inputJSON = file_get_contents('php://input');
 $input = json_decode($inputJSON, true);
 $hasErrors = false;
 $news= $input['news'];
+$content = $input['content'];
+$image =  $input['image'] ;
+$id =  $input['id'] ;
 $title = $news['title'];
-$image = $news['image'];
 $description = $news['description'];
 $author = $news['author'];
 $link = $news['link'];
-$oldName = $input['old_name'];
 
 
-if(!isset($oldName) || empty($oldName) ){
+if(!isset($id) || empty($id) ){
     $hasErrors = true;
 }
 
@@ -52,11 +53,11 @@ $newsRepo = new NewsRepository();
 
 $success = false;
 if($hasErrors === false){
-    $success = $newsRepo->update($title,$image,$description,$author,$link,$oldName);
+    $success = $newsRepo->update($title,$image,$description,$author,$link,$id);
 }
 if($success){
     $response['status'] = 202;
-    $response['message'] = "News: $oldName  edited successfully";
+    $response['message'] = "News: $title  edited successfully";
     echo json_encode($response);
     exit();
 }

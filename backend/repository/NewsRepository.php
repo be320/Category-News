@@ -97,18 +97,18 @@ class NewsRepository
         return $result;
     }
 
-    public function update($title,$image,$description,$author,$link,$oldName): bool
+    public function update($title,$image,$description,$author,$link,$id): bool
     {
         $success = false;
         try {
             $db = DBConnection::connect();
-            $stmt = $db->prepare("UPDATE news set title=:title, image=:image, description=:description, author=:author, link=:link where title = :oldName");
+            $stmt = $db->prepare("UPDATE news set title=:title, image=:image, description=:description, author=:author, link=:link where news_id = :id");
             $stmt->bindValue(':title', $title);
             $stmt->bindValue(':image', $image);
             $stmt->bindValue(':description', $description);
             $stmt->bindValue(':author', $author);
             $stmt->bindValue(':link', $link);
-            $stmt->bindValue(':oldName', $oldName);
+            $stmt->bindValue(':id', $id);
             $success = $stmt->execute();
         }
         catch (PDOException $e){
