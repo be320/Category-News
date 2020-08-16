@@ -13,6 +13,6 @@ class Category extends Model
     
     public function news()
     {
-        return $this->belongsToMany('App\Model\News', 'news_in_category');
+        return $this->belongsToMany('App\Model\News', 'news_in_categories','category_id','news_id');
     }
 }

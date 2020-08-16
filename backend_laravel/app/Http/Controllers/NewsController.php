@@ -48,7 +48,7 @@ class NewsController extends Controller
         $news->save();
         foreach ($categories as $cat) {
             $category = Category::where('name', $cat)->first();
-            $category->news()->attach($news->news_id);
+            $category->news()->attach($news->id);
         }
     }
 

@@ -8,6 +8,6 @@ class News extends Model
 {
     public function categories()
     {
-        return $this->belongsToMany('App\Model\Category', 'news_in_category');
+        return $this->belongsToMany('App\Model\Category', 'news_in_categories','news_id','category_id');
     }
 }
