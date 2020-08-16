@@ -82,10 +82,10 @@ const CategoryForm = ({ handleCategoryForm,loadNews,load,handleCategoryTitle }) 
   const createCategory = async () => {
     const category = {
       name: name,
-      parent_name: parentName
+      parent: parentName
     };
     const response = await axios.post(
-      "http://localhost/Category-News/backend/api/createCategory.php",
+      "http://localhost:8000/api/categories",
       category
     );
     console.log(response);
