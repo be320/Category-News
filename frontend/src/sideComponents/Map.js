@@ -17,11 +17,7 @@ const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle,load,loa
     }
 
     const deleteCategory = async() =>{
-      const data = {
-        name: categoryTitle
-      }
-      const response = await axios.post("http://localhost/Category-News/backend/api/deleteCategory.php",
-      data);
+      const response = await axios.delete(`http://localhost:8000/api/categories/${categoryID}`);
       console.log(response)
       changeTitle("news")
       load();
