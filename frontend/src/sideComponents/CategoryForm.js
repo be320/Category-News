@@ -23,7 +23,7 @@ const CategoryForm = ({ handleCategoryForm,loadNews,load,handleCategoryTitle }) 
 
   const getCategories = async () => {
     const response = await axios.get(
-      "http://localhost/Category-News/backend/api/getCategories.php"
+      "http://localhost:8000/api/categories"
     );
     setCategories(response.data);
     
