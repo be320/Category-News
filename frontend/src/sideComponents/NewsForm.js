@@ -17,7 +17,7 @@ import axios from "axios";
 const fileUpload = require('fuctbase64');
 let fileInput = null
 
-const NewsForm = ({ handleNewsForm,load,loadNews }) => {
+const NewsForm = ({ handleNewsForm,handleCategoryTitle }) => {
   const [state, setState] = React.useState({});
   const [counter, setCounter] = useState(0);
   const [categories, setCategories] = useState([]);
@@ -43,6 +43,10 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
     setState({ ...state, [event.target.name]: event.target.checked });
     
   };
+
+  const changeTitle = (value) => {
+    handleCategoryTitle(value)
+  }
 
   const handleCounter = value => {
     if (value < 0) value = categories.length - 1;
@@ -103,11 +107,8 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
     "http://localhost:8000/api/news",data
   );
   console.log(response);
-
-
+  changeTitle("news");
   handleNewsForm(false);
-  load();
-  loadNews();
   }
 
   const onDrop = async (picture,e) => {

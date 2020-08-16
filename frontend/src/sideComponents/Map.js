@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {FeaturedPlayList} from '@material-ui/icons'
 import {Edit,Delete} from '@material-ui/icons';
 import axios from "axios";
-const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle,load,loadNews}) => {
+const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle}) => {
 
     const [children,setChildren] = useState([]);
     const [parents, setParents] = useState([]);
@@ -20,7 +20,6 @@ const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle,load,loa
       const response = await axios.delete(`http://localhost:8000/api/categories/${categoryID}`);
       console.log(response)
       changeTitle("news")
-      load();
     }
 
 

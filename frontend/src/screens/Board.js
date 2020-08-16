@@ -11,7 +11,6 @@ import EditNewsForm from '../sideComponents/EditNewsForm';
 import NewsDetails from './NewsDetails';
 
 const Board = () => {
-  const [mainCategories, setMainCategories] = useState([]);
   const [showNewsForm, setShowNewsForm] = useState(false);
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [editCategoryForm, setEditCategoryForm] = useState(false);
@@ -54,23 +53,18 @@ const Board = () => {
 
   const loadNews = async() => {
     const response = await axios.get(
-      "http://localhost:8000/api/news", {
-        params: {
-          title: categoryTitle
-        }
-      }
-    );
-    console.log(response.data)
-    setNews(response.data)
+      `http://localhost:8000/api/categories/${categoryTitle}/news`);
+    console.log(response.data.news)
+    setNews(response.data.news)
   }
 
-  const load = async () => {
-    const data = await axios.get(
-      `http://localhost:8000/api/categories/news/family`
-    );
-    setMainCategories(data.data.children);
-    console.log(data)
-  };
+  // const load = async () => {
+  //   const data = await axios.get(
+  //     `http://localhost:8000/api/categories/news/family`
+  //   );
+  //   setMainCategories(data.data.children);
+  //   console.log(data)
+  // };
 
   const RenderNews = () => {
     if (news.length > 0) {
@@ -84,30 +78,11 @@ const Board = () => {
     }
   }
 
-  const RenderCategories = () => {
-    if (mainCategories.length > 0) {
-      return (
-        mainCategories.map((d, index) => (
-        <Category
-          name={d["name"]}
-          news={[]}
-          key={index}
-          handleEditCategoryForm={handleEditCategoryForm}
-          handleCategoryTitle={handleCategoryTitle}
-          load={load}
-          loadNews={loadNews}
-          handleShowNewsDetails={handleShowNewsDetails}
-        />
-      ))
-      )
-    } else {
-      return <div></div>;
-    }
-  };
+ 
 
   useEffect(() => {
+    setNews([]);
     loadNews();
-    load();
   }, [categoryTitle]);
 
   return (
@@ -118,19 +93,19 @@ const Board = () => {
         handleCategoryForm={handleCategoryForm}
         showNewsDetails={showNewsDetails}
       />
-      {showNewsForm ? <NewsForm handleNewsForm={handleNewsForm} load={load} loadNews={loadNews} /> : <></>}
+      {showNewsForm ? <NewsForm handleNewsForm={handleNewsForm} handleCategoryTitle={handleCategoryTitle} /> : <></>}
       {showCategoryForm ? (
-        <CategoryForm handleCategoryForm={handleCategoryForm} load={load} loadNews={loadNews} handleCategoryTitle={handleCategoryTitle} />
+        <CategoryForm handleCategoryForm={handleCategoryForm} handleCategoryTitle={handleCategoryTitle} />
       ) : (
         <></>
       )}
       {editCategoryForm ? (
-        <EditCategoryForm handleEditCategoryForm={handleEditCategoryForm} load={load} loadNews={loadNews} categoryTitle={categoryTitle} handleCategoryTitle={handleCategoryTitle} categoryID={categoryID} />
+        <EditCategoryForm handleEditCategoryForm={handleEditCategoryForm} categoryTitle={categoryTitle} handleCategoryTitle={handleCategoryTitle} categoryID={categoryID} />
       ) : (
         <></>
       )}
       {editNewsForm ? (
-        <EditNewsForm handleEditNewsForm={handleEditNewsForm} load={load} loadNews={loadNews} newsID={newsID}  />
+        <EditNewsForm handleEditNewsForm={handleEditNewsForm} handleCategoryTitle={handleCategoryTitle} newsID={newsID}  />
       ) : (
         <></>
       )}
@@ -139,7 +114,7 @@ const Board = () => {
           {/* <RenderCategories /> */}
         </div>
         { showNewsDetails? <NewsDetails newsID={newsID} />  : <div className="board">
-          <Map handleEditCategoryForm={handleEditCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} load={load} loadNews={loadNews} />
+          <Map handleEditCategoryForm={handleEditCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} />
           <div className="all-news">
           <RenderNews />
           </div>

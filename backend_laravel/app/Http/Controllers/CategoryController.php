@@ -106,4 +106,12 @@ class CategoryController extends Controller
             'id' => $nodeID
         ]);
     }
+
+    public function showNews($name){
+        $category = Category::where('name', $name)->first();
+        $news = $category->news;
+        return response()->json([
+            'news' => $news
+        ]);
+    }
 }

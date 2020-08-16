@@ -10,7 +10,7 @@ const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleN
   }
 
   const openDetails = () => {
-     handleNewsID(news.news_id);
+     handleNewsID(news.id);
      handleShowNewsDetails(true)
   }
 

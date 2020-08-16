@@ -17,7 +17,7 @@ import axios from "axios";
 const fileUpload = require('fuctbase64');
 let fileInput = null
 
-const EditNewsForm = ({ handleEditNewsForm,load,loadNews,newsID }) => {
+const EditNewsForm = ({ handleEditNewsForm,newsID,handleCategoryTitle }) => {
   const [news,setNews] = useState({});
   const [logo,setLogo] = useState("");
   const [image,setImage] = useState("");
@@ -68,10 +68,8 @@ const EditNewsForm = ({ handleEditNewsForm,load,loadNews,newsID }) => {
   );
   console.log(response);
 
-
+  changeTitle("news");
   handleEditNewsForm(false);
-  load();
-  loadNews();
   }
 
   const onDrop = async (picture,e) => {
@@ -106,6 +104,10 @@ const EditNewsForm = ({ handleEditNewsForm,load,loadNews,newsID }) => {
 
   const handleContent = (value) => {
     setContent(value)
+  }
+
+  const changeTitle = (value) => {
+    handleCategoryTitle(value)
   }
 
   useEffect(() => {

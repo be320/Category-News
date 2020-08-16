@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { TextField } from "@material-ui/core";
 import axios from "axios";
 
-const EditCategoryForm = ({ handleEditCategoryForm,load,categoryTitle,handleCategoryTitle,categoryID}) => {
+const EditCategoryForm = ({ handleEditCategoryForm,categoryTitle,handleCategoryTitle,categoryID}) => {
   const [name, setName] = useState("");
 
   const changeTitle = (value) => {
@@ -29,8 +29,7 @@ const EditCategoryForm = ({ handleEditCategoryForm,load,categoryTitle,handleCate
     );
     console.log(response);
     handleEditCategoryForm(false);
-    load();
-    changeTitle(name)
+    changeTitle(name);
   };
 
   return (

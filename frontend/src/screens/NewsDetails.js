@@ -6,15 +6,9 @@ const NewsDetails = ({ newsID }) => {
 
   const load = async () => {
     const data = await axios.get(
-      "http://localhost/Category-News/backend/api/getSingleNews.php",
-      {
-        params: {
-          id: newsID
-        }
-      }
-    );
-    setNews(data.data);
-    console.log(data.data);
+      `http://localhost:8000/api/news/${newsID}`);
+    setNews(data.data.data);
+    console.log(data.data.data);
   };
 
   useEffect(() => {

@@ -11,7 +11,7 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import axios from "axios";
 
-const CategoryForm = ({ handleCategoryForm,loadNews,load,handleCategoryTitle }) => {
+const CategoryForm = ({ handleCategoryForm,handleCategoryTitle }) => {
   const [name, setName] = useState("");
   const [parentName, setParentName] = useState("news");
   const [categories, setCategories] = useState([]);
@@ -89,7 +89,6 @@ const CategoryForm = ({ handleCategoryForm,loadNews,load,handleCategoryTitle }) 
       category
     );
     console.log(response);
-    load();
     changeTitle(name);
     handleCategoryForm(false);
   };
