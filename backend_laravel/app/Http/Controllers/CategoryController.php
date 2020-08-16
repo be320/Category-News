@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Category\CategoryResource;
 use App\Model\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+ 
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return Category::all();
     }
 
     /**
@@ -35,7 +39,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $node = new Category;
+        $node->name = $request->name;
+        $parentName = $request->parent;
+        $parent = Category::where('name', $parentName)->first();
+        $node->appendToNode($parent)->save();
     }
 
     /**
@@ -46,7 +54,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return new CategoryResource($category);
     }
 
     /**

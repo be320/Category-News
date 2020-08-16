@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\News\NewsResource;
 use App\Model\News;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        return new NewsResource($news);
     }
 
     /**
