@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { TextField } from "@material-ui/core";
 import axios from "axios";
 
-const EditCategoryForm = ({ handleEditCategoryForm,load,categoryTitle,handleCategoryTitle}) => {
+const EditCategoryForm = ({ handleEditCategoryForm,load,categoryTitle,handleCategoryTitle,categoryID}) => {
   const [name, setName] = useState("");
 
   const changeTitle = (value) => {
@@ -21,11 +21,10 @@ const EditCategoryForm = ({ handleEditCategoryForm,load,categoryTitle,handleCate
 
   const editCategory = async () => {
     const category = {
-      old_name: categoryTitle,
       name: name
     };
-    const response = await axios.post(
-      "http://localhost/Category-News/backend/api/editCategory.php",
+    const response = await axios.put(
+      `http://localhost:8000/api/categories/${categoryID}`,
       category
     );
     console.log(response);

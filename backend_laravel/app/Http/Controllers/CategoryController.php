@@ -77,7 +77,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
     }
 
     /**
@@ -93,16 +93,17 @@ class CategoryController extends Controller
 
     public function showFamily($name){
         $node = Category::where('name', $name)->first();
-        $response = "";
         $parent = $node->parent;
         $children =  $node->children;
         $descendants = $node->descendants;
         $ancestors =  $node->ancestors;
+        $nodeID = $node['id'];
         return response()->json([
             'parent' => $parent,
             'children' => $children,
             'descendants' => $descendants,
-            'ancestors' => $ancestors
+            'ancestors' => $ancestors,
+            'id' => $nodeID
         ]);
     }
 }

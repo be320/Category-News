@@ -5,10 +5,11 @@ import axios from "axios";
 const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle,load,loadNews}) => {
 
     const [children,setChildren] = useState([]);
-    const [parents, setParents] = useState([])
+    const [parents, setParents] = useState([]);
+    const [categoryID,setCategoryID] = useState(0);
 
     const openForm = () => {
-      handleEditCategoryForm(true)
+      handleEditCategoryForm(true,categoryID)
       }
 
     const changeTitle = (value) => {
@@ -30,14 +31,11 @@ const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle,load,loa
 
       const loadTitle = async () => {
         const data = await axios.get(
-          "http://localhost/Category-News/backend/api/getParentPath.php", {
-            params: {
-              name: categoryTitle
-            }
-          }
+          `http://localhost:8000/api/categories/${categoryTitle}/family`
         );
+        setCategoryID(data.data.id);
         setChildren(data.data.children)
-        setParents(data.data.parents)
+        setParents(data.data.ancestors)
       }
 
       const RenderChildren = () => {
@@ -53,7 +51,7 @@ const Map = ({handleEditCategoryForm, handleCategoryTitle,categoryTitle,load,loa
       }
 
       const RenderParents = () => {
-        if (parents.length > 0) {
+        if (parents !== null) {
           return (
             parents.map((d, index) => (
               <p className="category-parent" onClick={()=>changeTitle(d['name'])} > > {d['name']}</p>

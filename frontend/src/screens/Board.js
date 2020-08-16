@@ -20,6 +20,7 @@ const Board = () => {
   const [newsID,setNewsID] = useState("");
   const [news,setNews] = useState([]);
   const [showNewsDetails,setShowNewsDetails] = useState(false);
+  const [categoryID,setCategoryID] = useState(0);
 
   const handleCategoryTitle = (title) => {
     setCategoryTitle(title)
@@ -41,8 +42,9 @@ const Board = () => {
     setShowCategoryForm(value);
   };
 
-  const handleEditCategoryForm = (value) => {
+  const handleEditCategoryForm = (value,id="") => {
     setEditCategoryForm(value);
+    setCategoryID(id);
   };
 
   const handleEditNewsForm = (value,id="") => {
@@ -104,7 +106,7 @@ const Board = () => {
   };
 
   useEffect(() => {
-    loadNews();
+   // loadNews();
     load();
   }, [categoryTitle]);
 
@@ -123,7 +125,7 @@ const Board = () => {
         <></>
       )}
       {editCategoryForm ? (
-        <EditCategoryForm handleEditCategoryForm={handleEditCategoryForm} load={load} loadNews={loadNews} categoryTitle={categoryTitle} handleCategoryTitle={handleCategoryTitle} />
+        <EditCategoryForm handleEditCategoryForm={handleEditCategoryForm} load={load} loadNews={loadNews} categoryTitle={categoryTitle} handleCategoryTitle={handleCategoryTitle} categoryID={categoryID} />
       ) : (
         <></>
       )}
