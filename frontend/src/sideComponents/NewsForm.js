@@ -28,7 +28,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
 
   const getCategories = async () => {
     const response = await axios.get(
-      "http://localhost/Category-News/backend/api/getCategories.php"
+      "http://localhost:8000/api/categories"
     );
     setCategories(response.data);
     const data = response.data;
@@ -100,7 +100,7 @@ const NewsForm = ({ handleNewsForm,load,loadNews }) => {
     console.log(data)
     
    const response = await axios.post(
-    "http://localhost/Category-News/backend/api/createNews.php",data
+    "http://localhost:8000/api/news",data
   );
   console.log(response);
 

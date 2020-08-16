@@ -16,6 +16,7 @@ class CreateNewsInCategoriesTable extends Migration
         Schema::create('news_in_categories', function (Blueprint $table) {
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('news_id')->unsigned();
+            $table->timestamps();
         });
     }
 

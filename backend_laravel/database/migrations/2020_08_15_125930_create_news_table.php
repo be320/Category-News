@@ -21,6 +21,7 @@ class CreateNewsTable extends Migration
             $table->string('author');
             $table->string('link');
             $table->longText('content');
+            $table->timestamps();
         });
     }
 

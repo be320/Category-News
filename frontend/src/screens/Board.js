@@ -54,7 +54,7 @@ const Board = () => {
 
   const loadNews = async() => {
     const response = await axios.get(
-      "http://localhost/Category-News/backend/api/getNews.php", {
+      "http://localhost:8000/api/news", {
         params: {
           title: categoryTitle
         }
@@ -106,7 +106,7 @@ const Board = () => {
   };
 
   useEffect(() => {
-   // loadNews();
+    loadNews();
     load();
   }, [categoryTitle]);
 
