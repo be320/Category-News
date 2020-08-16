@@ -12,3 +12,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('/categories','CategoryController');
 Route::apiResource('/news','NewsController');
+Route::get('categories/{name}/family', 'CategoryController@showFamily');

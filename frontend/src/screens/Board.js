@@ -64,11 +64,7 @@ const Board = () => {
 
   const load = async () => {
     const data = await axios.get(
-      "http://localhost/Category-News/backend/api/getParentPath.php", {
-        params: {
-          name: "news"
-        }
-      }
+      `http://localhost:8000/api/categories/news/family`
     );
     setMainCategories(data.data.children);
     console.log(data)

@@ -90,4 +90,19 @@ class CategoryController extends Controller
     {
         //
     }
+
+    public function showFamily($name){
+        $node = Category::where('name', $name)->first();
+        $response = "";
+        $parent = $node->parent;
+        $children =  $node->children;
+        $descendants = $node->descendants;
+        $ancestors =  $node->ancestors;
+        return response()->json([
+            'parent' => $parent,
+            'children' => $children,
+            'descendants' => $descendants,
+            'ancestors' => $ancestors
+        ]);
+    }
 }
