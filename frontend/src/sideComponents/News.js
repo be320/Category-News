@@ -19,8 +19,7 @@ const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleN
     const data = {
       title: news.title
     }
-    const response = await axios.post("http://localhost/Category-News/backend/api/deleteNews.php",
-      data);
+    const response = await axios.delete(`http://localhost:8000/api/news/${news.id}`);
       console.log(response)
       loadNews();
   }
