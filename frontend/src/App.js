@@ -7,7 +7,10 @@ import "./App.css"
 const App = () => {
 
   return(
-    <Board />
+    <Router>
+        <Route exact path='/' component={Board} />
+        <Route exact path='/category/:category/news/:newsID' component={NewsDetails} />
+    </Router>
   )
 
 }

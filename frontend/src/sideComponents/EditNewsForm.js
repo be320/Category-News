@@ -33,14 +33,8 @@ const EditNewsForm = ({ handleEditNewsForm,newsID,handleCategoryTitle }) => {
 
   const loadOldData = async() => {
     const data = await axios.get(
-      "http://localhost/Category-News/backend/api/getSingleNews.php",
-      {
-        params: {
-          id: newsID
-        }
-      }
-    );
-    const response = data.data;
+      `http://localhost:8000/api/news/${newsID}`);
+    const response = data.data.data;
     setNews({
       title: response.title,
       description: response.description,
@@ -49,7 +43,7 @@ const EditNewsForm = ({ handleEditNewsForm,newsID,handleCategoryTitle }) => {
     });
     setImage(response.image)
     setContent(response.content)
-    console.log(data.data);
+    console.log(data.data.data);
   }
 
   const editNews = async() => {
@@ -63,8 +57,9 @@ const EditNewsForm = ({ handleEditNewsForm,newsID,handleCategoryTitle }) => {
 
     console.log(data)
     
-   const response = await axios.post(
-    "http://localhost/Category-News/backend/api/editNews.php",data
+   const response = await axios.put(
+    `http://localhost:8000/api/news/${newsID}`,
+    data
   );
   console.log(response);
 
@@ -141,7 +136,7 @@ const EditNewsForm = ({ handleEditNewsForm,newsID,handleCategoryTitle }) => {
         <FormLabel component="legend" style={{ color: "#c26c62",marginTop:"20px",marginBottom:"20px" }}>
               Content
             </FormLabel>
-        <TinyEditor  handleContent={handleContent} oldContent={content} />
+        {content? <TinyEditor  handleContent={handleContent} oldContent={content} /> : <></>}
         <div className="form-category-buttons">
           <div className="form-category-add" onClick={editNews} >Save</div>
           <div className="form-category-cancel" onClick={close}>

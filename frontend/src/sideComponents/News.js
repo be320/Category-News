@@ -2,11 +2,11 @@ import React from "react";
 import {Edit,Delete} from '@material-ui/icons';
 import axios from 'axios';
 
-const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleNewsID}) => {
+const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleNewsID,categoryTitle}) => {
 
 
   const openForm = () => {
-    handleEditNewsForm(true,news.news_id)
+    handleEditNewsForm(true,news.id)
   }
 
   const openDetails = () => {
@@ -29,6 +29,7 @@ const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleN
    
     <div className="news-container">
     <div className="news-row">
+    <a href={'/category/'+categoryTitle+'/news/'+news.id}>
     <div className="news-body" onClick={openDetails} >
     <div className="news-title">
     {news.title}
@@ -40,6 +41,7 @@ const News = ({news, handleEditNewsForm,loadNews, handleShowNewsDetails, handleN
    {news.description}
     </div>
     </div>
+    </a>
     <div className="left-news">
     <div className="lookup-action">
       <div className="lookup-edit" onClick={openForm} >

@@ -6,9 +6,6 @@ const Header = ({handleNewsForm,handleCategoryForm,handleShowNewsDetails,showNew
         handleNewsForm(true)
     }
 
-    const backHome = () => {
-        handleShowNewsDetails(false);
-    }
 
     const showCategory = () => {
         handleCategoryForm(true)
@@ -16,12 +13,9 @@ const Header = ({handleNewsForm,handleCategoryForm,handleShowNewsDetails,showNew
 
     return(
         <div className="header-container">
-            <h1 onClick={backHome} >Croco News</h1>
+          <a href='/'>  <h1 >Croco News</h1> </a>
             { showNewsDetails? 
             <div className="header-buttons"> 
-            <div className="add-category-button" onClick={backHome} >
-                    Back to Board
-            </div>
             </div> : <div className="header-buttons">
                 <div className="add-category-button" onClick={showCategory} >
                     + Add Category

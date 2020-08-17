@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Category from "../sideComponents/Category";
 import axios from "axios";
 import Header from "../sideComponents/Header";
 import Map from "../sideComponents/Map";
@@ -8,7 +7,6 @@ import CategoryForm from "../sideComponents/CategoryForm";
 import NewsForm from "../sideComponents/NewsForm";
 import EditCategoryForm from '../sideComponents/EditCategoryForm';
 import EditNewsForm from '../sideComponents/EditNewsForm';
-import NewsDetails from './NewsDetails';
 
 const Board = () => {
   const [showNewsForm, setShowNewsForm] = useState(false);
@@ -58,19 +56,12 @@ const Board = () => {
     setNews(response.data.news)
   }
 
-  // const load = async () => {
-  //   const data = await axios.get(
-  //     `http://localhost:8000/api/categories/news/family`
-  //   );
-  //   setMainCategories(data.data.children);
-  //   console.log(data)
-  // };
 
   const RenderNews = () => {
     if (news.length > 0) {
       return (
         news.map((n, index) => (
-          <News handleEditNewsForm={handleEditNewsForm} news={n} loadNews={loadNews} handleNewsID={handleNewsID} handleShowNewsDetails={handleShowNewsDetails} />
+          <News handleEditNewsForm={handleEditNewsForm} news={n} loadNews={loadNews} handleNewsID={handleNewsID} handleShowNewsDetails={handleShowNewsDetails} categoryTitle={categoryTitle} />
       ))
       )
     } else {
@@ -113,12 +104,12 @@ const Board = () => {
         <div className="folder-structure">
           {/* <RenderCategories /> */}
         </div>
-        { showNewsDetails? <NewsDetails newsID={newsID} />  : <div className="board">
+        <div className="board">
           <Map handleEditCategoryForm={handleEditCategoryForm} handleCategoryTitle={handleCategoryTitle} categoryTitle={categoryTitle} />
           <div className="all-news">
           <RenderNews />
           </div>
-        </div>}
+        </div>
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "../sideComponents/Header";
 
-const NewsDetails = ({ newsID }) => {
+const NewsDetails = (props) => {
   const [news, setNews] = useState({});
 
   const load = async () => {
     const data = await axios.get(
-      `http://localhost:8000/api/news/${newsID}`);
+      `http://localhost:8000/api/news/${props.match.params.newsID}`);
     setNews(data.data.data);
     console.log(data.data.data);
   };
@@ -16,9 +17,13 @@ const NewsDetails = ({ newsID }) => {
   }, []);
 
   return (
-    <div className="news-details-container">
-      {news ? (
-        <div>
+<div className="container">
+      <Header
+        showNewsDetails={true}
+      />
+      
+      {news.image ? (
+        <div className="news-details-container">
           <img
             className="news-details-image"
             src={"data:image/*;base64, " + news.image}
@@ -42,7 +47,16 @@ const NewsDetails = ({ newsID }) => {
       ) : (
         <></>
       )}
+
     </div>
+
+
+
+
+
+
+
+    
   );
 };
 

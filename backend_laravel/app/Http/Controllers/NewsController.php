@@ -83,7 +83,13 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $title = $request->news['title'];   
+        $image = $request->image;
+        $description = $request->news['description'];
+        $author = $request->news['author'];
+        $link = $request->news['link'];
+        $content = $request->content;
+        $news->update(['title'=> $title,'image'=> $image, 'description' => $description, 'author' => $author, 'link' => $link, 'content' => $content]);
     }
 
     /**
@@ -94,6 +100,6 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+       $news->delete();
     }
 }

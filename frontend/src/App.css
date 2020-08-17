@@ -404,6 +404,11 @@ input {
   margin-top: 10px;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 .news-description {
   margin-top: 10px;
   max-height: 80px;
@@ -419,9 +424,6 @@ input {
 }
 
 .news-details-image {
-  padding: 0px;
-  margin-top: 10px;
-  margin-left: 30px;
   border: 10px;
   border-radius: 10px;
 }
@@ -429,14 +431,16 @@ input {
 .news-details-container{
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
   overflow-y: auto;
 }
 
 .news-details-content {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-top: 30px;
-  margin-left: 30px;
   width: 80%;
 }
 
